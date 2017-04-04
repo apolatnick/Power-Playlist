@@ -1,0 +1,64 @@
+<!--//Sara Cassella made this -->
+<!--Home screen for Host on Desktop View -->
+
+<DOCTYPE html>
+<title>
+</title>
+<head>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/request.js"></script>
+	<script src="jquery-sortable-master/source/js/jquery-sortable.js"></script>
+	<script>
+	$(function  () {
+	  $("ol.example").sortable();
+	});
+	</script>
+	<script>
+	function addSong() {
+		var example = document.querySelector(".example");
+		example.appendChild(document.createElement('li')).textContent='new Song';
+		$("li:even").css("background-color", "#333333");
+	}
+	</script>
+	<link rel="stylesheet" type="text/css" href="css/DesktopHome.css"></link>
+</head>
+<body>
+	<div id="header">
+	 <h1 id="title">Welcome, Admin</h1>
+ </div>
+<div id="searchbar">
+	<input id="search" type="text" name="search" placeholder="Search for a song..">
+</div>
+	<button type="button" id="button" onclick="addSong()" style="color: black; width: 150px">Click Me</button>
+<div id="playlistColumn">
+	<h2>Up Next</h2>
+		<div id="songList">
+			<ol class='example'>
+			</ol>
+		</div>
+</div>
+
+
+
+<div id="suggestedSongColumn">
+	<h2 style="color: white;">Suggested by Guests</h2>
+</div>
+
+
+
+
+</body>
+<div id="navigation">
+	<ul>
+	  <li class="navlink borderLeft"><img src="images/HomeIconWhite-02.png" style="width: 40px; padding-top: 10px;"><a href="2DesktopHome.html" class="active" style="padding-top: 14px;">Home</a></li>
+	  <li class="navlink borderLeft"><img src="images/MusicProvidersGrey-02.png" style="width: 60px; padding-top: 10px;"><a href="MusicProviders.html" style="padding-top: 14px;">Music Providers</a></li>
+	  <li class="navlink borderLeft"><img src="images/PlaylistsIconGrey-02.png" style="width: 40px; padding-top: 10px;"><a href="" style="padding-top: 14px;">Playlists</a></li>
+		<li class="navlink borderLeft"><img src="images/ShareIconGrey-02.png" style="width: 40px; padding-top: 8px;"><a href="" style="padding-top: 11px;">Share Pin</a></li>
+	  <li class="navlink"><img src="images/SettingsIconGrey-02.png" style="width: 40px; padding-top: 10px;"><a href="" style="padding-top: 11px;">Settings</a></li>
+	</ul>
+</div>
+<div id="footer">
+ <p style="text-align: center;">Copyright 2017 Sara Cassella / Alexander Polatnick / Kristen Ronhovde</p>
+</div>
+</html>
