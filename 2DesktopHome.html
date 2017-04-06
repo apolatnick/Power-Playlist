@@ -37,6 +37,7 @@
 	</script>
 	<script>
 	function addSong() {
+		$("#empty").remove();
 		var example = document.querySelector(".example");
 		example.appendChild(document.createElement('li')).textContent='new Song';
 		$("li:even").css("background-color", "#333333");
