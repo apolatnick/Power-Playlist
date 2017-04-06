@@ -97,15 +97,15 @@ ul {
 #searchbar {
   margin: auto;
   margin-top: 4%;
-  width: 80%;
+  width: 60%;
 }
 .search {
   color: black;
-  width: 100%;
+  width: 80%;
   height: 50px;
   font-size: 2em;
-  border-radius: 15px;
-  border: 2px solid #ccc;
+  border-radius: 25px;
+  border: none;
   /*background-image: url('search-icon.png');*/
   background-size: 23px 23px;
   background-position: 2% 50%;
@@ -176,6 +176,7 @@ h3 {
    color: grey;
    font-size: 2em;
    font-weight: 100;
+   margin-bottom: 1px;
 }
 
 #pinpage {
@@ -197,18 +198,18 @@ h3 {
 
 #submitPin {
   color: white;
-  font-size: 2em;
-  font-weight: bold;
+  font-size: 1.5em;
+  font-weight: lighter;
   margin-top: 40px;
-  padding: 15px;
+  padding: 15px 30px 15px 30px;
   background-color: #6c36c1;
-  width: 150px;
+  width: 220px;
   border-radius: 35px;
   border: none;
 }
 
 #hostButton {
-  color: white;
+  color: lightgrey;
   font-size: 1em;
   font-weight: lighter;
   margin-top: 1px;
