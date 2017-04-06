@@ -1,0 +1,243 @@
+html, body {
+  margin:0px;
+  padding:0px;
+}
+
+* {
+  font-family: helvetica;
+  color: white;
+}
+
+body {
+   background-color: black;
+}
+
+#header {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: url(../images/gradientWaves.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  /*  background-color: #6c36c1; */
+    width: 100%;
+    height: 60px;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: 100;
+}
+
+#title {
+  height: 60px;
+  margin-top: 0;
+  padding-top: 10px;
+  vertical-align: middle;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+
+
+  /* height: 60px;
+  margin-top: 0;
+  vertical-align: middle;
+  padding-left: 2%;
+  text-align: center; */
+}
+
+#navigation {
+  font-size: 1em;
+  position: fixed;
+  width: 100%;
+  bottom: 30px;
+  background-color: #333333;
+  left: 0;
+  right: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navlink {
+    float: left;
+    width: 19.9%;
+    background-color: #333333;
+}
+
+.borderLeft {
+  border-right: .1px solid white;
+  top: 20%;
+  bottom: 20%;
+}
+
+.navlink a {
+    display: block;
+    color: grey;
+    text-align: center;
+    padding: 30px 16px;
+    text-decoration: none;
+}
+
+.navlink a:hover {
+    color: white;
+}
+
+.navlink a.active {
+  color: white;
+}
+
+#searchbar {
+  margin: auto;
+  margin-top: 4%;
+  width: 80%;
+}
+.search {
+  color: black;
+  width: 100%;
+  height: 50px;
+  font-size: 2em;
+  border-radius: 15px;
+  border: 2px solid #ccc;
+  /*background-image: url('search-icon.png');*/
+  background-size: 23px 23px;
+  background-position: 2% 50%;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 33px;"
+}
+
+
+.ui-autocomplete {
+    color: #96f226;
+    border-radius: 5px;
+    border: 1px solid #454545;
+}
+
+.ui-autocomplete li {
+  background-color: ;
+}
+
+
+
+
+
+#playlistColumn
+{
+  width: 88%;
+  margin-top: 4%;
+  margin: auto;
+  height: 1000px;
+}
+
+#songList {
+  border: 2px solid #333333;
+}
+
+li {
+  height: 100px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: black;
+  border-width: 2px;
+  border-color: #333333;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: lighter;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+}
+
+#songList {
+   border: 10px;
+   border-color: white;
+}
+
+#pintitle {
+   color: grey;
+   font-size: 2em;
+   font-weight: 100;
+}
+
+#pinpage {
+  width: 60%;
+  margin: auto;
+}
+#pin {
+  width: 460px;
+  /*height: 100px;*/
+  margin: auto;
+  padding-top: 1%;
+}
+.pin {
+  width: 75px;
+  height: 75px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#submitPin {
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 40px;
+  padding: 15px;
+  background-color: #6c36c1;
+  width: 150px;
+  border-radius: 35px;
+  border: none;
+}
+
+#hostButton {
+  color: white;
+  font-size: 1em;
+  font-weight: lighter;
+  margin-top: 1px;
+  padding: 20px;
+  background-color: #3e26c6;
+  width: 200px;
+  border-radius: 35px;
+  border: none;
+  margin-bottom: 30px;
+}
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ol.example li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ol.example li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+
+#footer {
+  position: fixed;
+  width: 100%;
+  background-color: #333333;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

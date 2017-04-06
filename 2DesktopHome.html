@@ -8,7 +8,28 @@
 	<meta charset="utf-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="js/request.js"></script>
-	<script src="jquery-sortable-master/source/js/jquery-sortable.js"></script>
+	<script src="jq/jquery-sortable-master/source/js/jquery-sortable.js"></script>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!--script for the autocomplete search bar -->
+	<script>
+	$( function() {
+		var availableSongs = [
+			"Hello",
+			"Don't Gotta Work It Out",
+			"The Good Life",
+			"It's A Man's World",
+			"Smooth"
+		];
+		$( "#tags" ).autocomplete({
+			source: availableSongs
+		});
+	} );
+	</script>
+
+<!--script for the striping of the list and the drag and drop -->
 	<script>
 	$(function  () {
 	  $("ol.example").sortable();
@@ -28,8 +49,10 @@
 	 <h1 id="title">Welcome, Admin</h1>
  </div>
 <div id="searchbar">
-	<input id="search" type="text" name="search" placeholder="Search for a song..">
+	<input id="tags" class="search" type="text" name="search" placeholder="Search for a song..">
 </div>
+
+
 	<button type="button" id="button" onclick="addSong()" style="color: black; width: 150px">Click Me</button>
 <div id="playlistColumn">
 	<h2>Up Next</h2>
