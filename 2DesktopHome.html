@@ -14,7 +14,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!--script for the autocomplete search bar -->
-	<script>
+<!--	<script>
 	$( function() {
 		var availableSongs = [
 			"Hello",
@@ -27,7 +27,7 @@
 			source: availableSongs
 		});
 	} );
-	</script>
+</script>-->
 
 <!--script for the striping of the list and the drag and drop -->
 	<script>
@@ -52,30 +52,33 @@
 	<label for="tags" style="padding-right: 5px; vertical-align: middle; font-size: 1.25em; color: grey;">Search</label>
 	<input id="tags" class="search" type="text" name="search" placeholder="Search for a song..">
 </div>
+<div id="dropdown">
+</div>
 
 
 	<button type="button" id="button" onclick="addSong()" style="color: black; width: 150px">Click Me</button>
 <div id="playlistColumn">
 	<h2>Up Next</h2>
+	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p><!--here will need to be removed when a song is added-->
 		<div id="songList">
 			<ol class='example'>
 			</ol>
 		</div>
 </div>
 
-
-
 <div id="suggestedSongColumn">
-	<h2 style="color: white;">Suggested by Guests</h2>
+	<h2 style="color: white; margin-top: none; margin-bottom: 1000px; display: block;">Suggested by Guests</h2>
 </div>
+
+
+
+</body>
 
 <audio controls style="bottom: 130px; width: 100%; position: fixed;">
   <source src="horse.ogg" type="audio/ogg">
   <source src="horse.mp3" type="audio/mpeg">
 </audio>
 
-
-</body>
 <div id="navigation">
 	<ul>
 	  <li class="navlink borderLeft"><img src="images/HomeIconWhite-02.png" style="width: 40px; padding-top: 10px;"><a href="2DesktopHome.html" class="active" style="padding-top: 14px;">Home</a></li>
