@@ -1,5 +1,5 @@
 $(document).ready(function searchSong(){
-	$("#search").keypress(function(event){
+	$("#tags").keypress(function(event){
 		if(event.which == 13){
     		var aResult;
 		jQuery.ajax({
@@ -7,7 +7,7 @@ $(document).ready(function searchSong(){
     		url: 'http://localhost:8888/~apolatnick/SeniorDesign/php/search.php',
     		dataType: 'json',
 				async: true,
-    		data: {functionname: 'find', arguments: [$("#search").val()]},
+    		data: {functionname: 'find', arguments: [$("#tags").val()]},
 
     		success: function (result,textstatus) {
                   		if(!('error' in result))
