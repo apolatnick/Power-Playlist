@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="js/request.js"></script>
+	<script src="js/requestSong.js"></script>
 	<script src="jq/jquery-sortable-master/source/js/jquery-sortable.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -72,7 +72,8 @@ $(window).on('resize', function() {
 
 <body>
 	<div id="header">
-	 <h1 id="title">Welcome, Admin:</h1>
+		<img src="images/thickHand.png" style="float: left; height: 45px; padding-top: 7.5px; margin-left: 10px; margin-left: 10px;"></img>
+	 <h1 id="title">PowerPlaylist<div style="font-weight: 100; display: inline-block; margin-left: 20px;">Welcome Admin</div></h1>
  </div>
 <div id="searchbar" class="searchBarDesk">
 	<label for="find"  id="labelForSearch" class="labelDesk">Search</label>
@@ -82,20 +83,23 @@ $(window).on('resize', function() {
 <div id="dropdown">
 </div>
 
+
 <div id="playlistColumn" class="playDesk">
 	<h2 id="upNext">Up Next</h2>
 	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p>
 		<div id="songList">
 			<ol class='example' id="playlist">
-					<li data-ogg="music/Fitz.mp3">Don't Gotta Work it Out<br /><p class="artist">Artist Here</p></li>
+					<li data-ogg="music/Fitz.mp3"><div class="songItem">Don't Gotta Work it Out<br /><p class="artist">Artist Here</p></div></li>
 					<li data-ogg="music/Adele.mp3">Hello<br /><p class="artist">Artist Here</p></li>
 					<li data-ogg="music/Santana.mp3">Smooth<br /><p class="artist">Artist Here</p></li>
 			</ol>
 		</div>
 </div>
-<div id="suggestedSongColumn" class="suggDesk">
-	<h2 style="color: white; margin-top: none; margin-bottom: 1000px; display: block;">Suggested by Guests</h2>
-	<p id="emptyalso" style="color: white; text-align: center; position: relative;">No songs suggested by guests.</p>
+
+<div id="suggestedSongColumn" class="suggDesk" display="inline-block" style="overflow: auto;">
+	<h2 style="color: white; margin-top: none; margin-bottom: 1000px; display: block; font-size: 1.5em; text-align: left;">Suggested by Guests</h2>
+	<p>Waiting for host's approval</p>
+	<p id="emptyalso" style="color: white; text-align: center;">No songs suggested by guests.</p>
 	<div id="songList2" style="width: 100%; margin-top: 0px; position: relative;">
 		<ol class="example">
 			<li>Suggested Song 1</li>
@@ -105,6 +109,8 @@ $(window).on('resize', function() {
 		<div style="clear: both;"></div>
 	</div>
 </div>
+
+
 </body>
 
 <!-- <audio controls style="bottom: 130px; width: 100%; position: fixed;">
