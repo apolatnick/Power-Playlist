@@ -47,7 +47,7 @@
 </head>
 <body>
 	<div id="header">
-	 <h1 id="title">Welcome, Admin</h1>
+	 <h1 id="title">Welcome, Admin:</h1>
  </div>
 <div id="searchbar">
 	<label for="tags" style="padding-right: 5px; vertical-align: middle; font-size: 1.25em; color: grey;">Search</label>
@@ -62,7 +62,11 @@
 	<h2>Up Next</h2>
 	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p><!--here will need to be removed when a song is added-->
 		<div id="songList">
-			<ol class='example'>
+			<ol class='example' id="playlist">
+					<li data-ogg="music/Fitz.mp3">Don't Gotta Work it Out</li>
+					<li data-ogg="music/Adele.mp3">Hello</li>
+					<li data-ogg="music/Santana.mp3">Smooth</li>
+
 			</ol>
 		</div>
 </div>
@@ -75,10 +79,78 @@
 
 </body>
 
-<audio controls style="bottom: 130px; width: 100%; position: fixed;">
+<!-- <audio controls style="bottom: 130px; width: 100%; position: fixed;">
   <source src="horse.ogg" type="audio/ogg">
   <source src="horse.mp3" type="audio/mpeg">
-</audio>
+</audio> -->
+
+<audio id="player"></audio>
+
+<ul id="playlist">
+	<li data-ogg="http://www.lunerouge.org/sons/sf/LRWeird%201%20by%20Lionel%20Allorge.ogg">Space 1</li>
+	<li data-ogg="http://www.lunerouge.org/sons/sf/LRWeird%202%20by%20Lionel%20Allorge.ogg">Space 2</li>
+	<li data-ogg="http://www.lunerouge.org/sons/sf/LRWeird%203%20by%20Lionel%20Allorge.ogg">Space Lab</li>
+</ul>
+<div id="playbar">
+<button class="playbutton" id="previous">Previous Song</button>
+<button class="playbutton" id="stop">Stop</button>
+<button class="playbutton" id="next">Next Song</button>
+</div>
+
+<script type="text/javascript">
+// globals
+var _player = document.getElementById("player"),
+	_playlist = document.getElementById("playlist"),
+	_stop = document.getElementById("stop");
+	_nextSong = document.getElementById("next");
+	_previous = document.getElementById("previous");
+
+// functions
+function playlistItemClick(clickedElement) {
+	var selected = _playlist.querySelector(".selected");
+	if (selected) {
+			selected.classList.remove("selected");
+	}
+	clickedElement.classList.add("selected");
+
+	_player.src = clickedElement.getAttribute("data-ogg");
+	_player.play();
+}
+
+function playNext() {
+	var selected = _playlist.querySelector("li.selected");
+	if (selected && selected.nextSibling) {
+			playlistItemClick(selected.nextSibling);
+	}
+}
+
+function playPrevious() {
+var selected = _playlist.querySelector("li.selected");
+if (selected && selected.previousSibling) {
+	playlistItemClick(selected.previousSibling);
+}
+}
+// event listeners
+_stop.addEventListener("click", function () {
+	_player.pause();
+});
+
+_nextSong.addEventListener("click", playNext);
+
+_previous.addEventListener("click", playPrevious);
+
+_player.addEventListener("ended", playNext);
+
+_playlist.addEventListener("click", function (e) {
+	if (e.target && e.target.nodeName === "LI") {
+			playlistItemClick(e.target);
+	}
+});
+</script>
+
+
+
+
 
 <div id="navigation">
 	<ul>
