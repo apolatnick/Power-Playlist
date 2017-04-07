@@ -39,7 +39,7 @@ padding-top: 15px;
 vertical-align: middle;
 font-size: 1.5em;
 font-weight: bold;
-padding-left: 2%;
+padding-left: 65px;
   /*height: 60px;
   margin-top: 0;
   padding-top: 10px;
@@ -118,7 +118,7 @@ ul {
   color: black;
   width: 80%;
   height: 50px;
-  font-size: 2em;
+  font-size: 1.25em;
   border-radius: 25px;
   border: none;
   /*background-image: url('search-icon.png');*/
@@ -146,9 +146,14 @@ ul {
 
 .labelDesk {
   padding-right: 10px;
-  vertical-align: middle;
+  vertical-align: 0%;
   font-size: 1.25em;
   color: grey;
+  padding-bottom: 300px;
+}
+
+.labelDesk-placeholder {
+  color: green;
 }
 
 .labelPhone {
@@ -242,25 +247,36 @@ ul {
 }
 
 .playDesk {
-  width: 45%;
+  width: 60%;
   margin-top: 20px;
   margin: auto;
   overflow: visible;
   display: block;
-  float: right;
-  margin-right: 2.5%;
+  float: left;
+  margin-left: 2.5%;
+  margin-right: none;
   /*border: 2px solid white;*/
 }
 
+.playDesk li {
+    height: 40px;
+    text-align: center;
+    background-color: black;
+    text-align: left;
+    padding-left: 75px;
+    padding-top: 10px;
+}
+
 .suggDesk {
-  width: 44%;
+  width: 25%;
   margin-top: 20px;
   margin: auto;
   overflow: visible;
   display: block;
   /*border: 2px solid white;*/
-  float: left;
-  margin-left: 2.5%;
+  float: right;
+  margin-left: 1%;
+  margin-right: 5%;
 }
 
 /*#songList {
@@ -299,9 +315,10 @@ li {
 }
 
 h2 {
-  font-size: 2em;
-  font-weight: lighter;
+  font-size: 1.5em;
+  font-weight:;
   text-align: center;
+  margin-top: 50px;
 }
 
 h3 {
