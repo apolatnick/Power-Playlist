@@ -161,19 +161,46 @@ ul {
   color: green;
 }
 
-#playlistColumn
+.playPhone
 {
   width: 88%;
   margin-top: 4%;
   margin: auto;
-  height: 1000px;
   overflow: visible;
   display: block;
 }
 
-#songList {
-  border: 2px solid #333333;
+.suggPhone {
+  width: 88%;
+  margin: auto;
+  overflow: visible;
+  display: block
 }
+
+.playDesk {
+  width: 45%;
+  margin-top: 20px;
+  margin: auto;
+  overflow: visible;
+  display: block;
+  float: right;
+  /*border: 2px solid white;*/
+}
+
+.suggDesk {
+  width: 44%;
+  margin-top: 20px;
+  margin: auto;
+  overflow: visible;
+  display: block;
+  /*border: 2px solid white;*/
+  float: left;
+}
+
+/*#songList {
+  border: 2px solid #333333;
+  border-color: white;
+}*/
 
 
 
@@ -196,9 +223,6 @@ ul {
 }
 
 
-
-
-
 li {
   height: 100px;
   text-align: center;
@@ -218,11 +242,6 @@ h3 {
   text-align: center;
   vertical-align: middle;
   line-height: 100px;
-}
-
-#songList {
-   border: 10px;
-   border-color: white;
 }
 
 #pintitle {
