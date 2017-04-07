@@ -17,6 +17,7 @@ $songArray[1] = array("Don't Gotta Work It Out","Ftiz and The Tantrums","Picking
 $songArray[2] = array("The Good Life","Frank Sinatra","N/A",148,"Pop","Frank Sinatra.mp3","mpeg",0);
 $songArray[3] = array("It's A Man's World","James Brown","It's A Man's Man's Man's World",194,"Funk","James Brown.mp3","mpeg",0);
 $songArray[4] = array("Smooth","Santana","Supernatural",268,"Rock","Santana.mp3","mpeg",0);
+$songArray[5] = array("Smooth","Other Guy","Other Album",268,"Rock","Santana.mp3","mpeg",0);
 
 class song{
 	protected $name;
@@ -166,11 +167,11 @@ class spotifySong extends song{
 // 	return $aResult;
 // }
 
+
 function find($input){
 	$aResult = array();
 	$count = 0;
 	$flag = 0;
-	$test;
 	for($i = 0; $i < count($GLOBALS['songArray']); $i++)
 	{
 		if(strtolower($input) == strtolower($GLOBALS['songArray'][$i][0])){
@@ -201,35 +202,37 @@ function find($input){
 		}
 		$flag = 0;
 	}
-	return $aResult;
+
+	return array_values($aResult);
 }
+
 
 
 $result = array();
 if( !isset($_POST['functionname']) ){
 		$result['error'] = 'No function name';
-		file_put_contents("txt/t.txt","No function name");
+		// file_put_contents("txt/t.txt","No function name");
  }
 elseif( !isset($_POST['arguments']) ) {
 		$result['error'] = 'No function arguments';
-		file_put_contents("txt/t.txt","No function arguments!");
+		// file_put_contents("txt/t.txt","No function arguments!");
  }
 else{
 switch($_POST['functionname']) {
 				case 'find':
 					 if( !is_array($_POST['arguments']) || (count($_POST['arguments']) < 1) ) {
 							 $result['error'] = 'Error in function arguments';
-							 file_put_contents("txt/t.txt","Error in function arguments!");
+							//  file_put_contents("txt/t.txt","Error in function arguments!");
 					 }
 					 else {
 
 							$result['output'] = find($_POST['arguments'][0]);
-							file_put_contents("txt/t.txt",$_POST['functionname']);
+							// file_put_contents("txt/t.txt",$_POST['functionname']);
 					 }
 					 break;
 
 				default:
-					 file_put_contents("txt/t.txt","Could not match function!");
+					//  file_put_contents("txt/t.txt","Could not match function!");
 					 $result['error'] = 'Could not match function';
 					 break;
 			}
