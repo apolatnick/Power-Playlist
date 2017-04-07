@@ -4,6 +4,17 @@ function loadFunction()
 	//document.getElementById("chosenSong").addEventListener("click", testFunction);
 }
 
+function addToPlaylist(song){
+	//put song at the end of the playlist
+	$("#empty").remove();
+	$("#emptyalso").remove();
+	var example = document.querySelector(".example");
+	example.appendChild(document.createElement('li')).textContent= song;
+	$("li:even").css("background-color", "#333333");
+
+}
+
+
 
 $(document).ready(function searchSong(){
 	$("#tags").keypress(function(event){
@@ -29,11 +40,13 @@ $(document).ready(function searchSong(){
 							//concatinate song name with artist maybe? make it a variable and use it for text content?
 							var obj;
 							obj = newList.appendChild(document.createElement("li"));
-							//var txt = aResult[i][0] + " - " + aResult[i][1];
-							obj.textContent = aResult[i][1];
+							var txt = aResult[i][0] + " - " + aResult[i][1];
+							obj.textContent = txt;
+							$(obj).attr("data",aResult[i][5]);
 							$(obj).addClass("searchList");
 							$(".searchList").click(function(e){
-								alert("testing on click");
+								alert(e.target);
+								addToPlaylist(e.target.textContent);
 							});
 
 						}
