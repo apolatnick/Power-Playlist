@@ -28,6 +28,21 @@
 		});
 	} );
 </script>-->
+<script>
+$(window).on('resize', function() {
+    if($(window).width() < 480) {
+        $('#playlistColumn').addClass('playPhone');
+        $('#playlistColumn').removeClass('playDesk');
+				$('#suggestedSongColumn').addClass('suggPhone');
+				$('#suggestedSongColumn').removeClass('suggDesk');
+    }else{
+        $('#playlistColumn').addClass('playDesk');
+        $('#playlistColumn').removeClass('playPhone');
+				$('#suggestedSongColumn').addClass('suggDesk');
+				$('#suggestedSongColumn').removeClass('suggPhone');
+    }
+})
+</script>
 
 <!--script for the striping of the list and the drag and drop -->
 	<script>
@@ -58,7 +73,7 @@
 
 
 	<button type="button" id="button" onclick="addSong()" style="color: black; width: 150px">Click Me</button>
-<div id="playlistColumn">
+<div id="playlistColumn" class="playDesk">
 	<h2>Up Next</h2>
 	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p><!--here will need to be removed when a song is added-->
 		<div id="songList">
@@ -71,7 +86,7 @@
 		</div>
 </div>
 
-<div id="suggestedSongColumn">
+<div id="suggestedSongColumn" class="suggDesk">
 	<h2 style="color: white; margin-top: none; margin-bottom: 1000px; display: block;">Suggested by Guests</h2>
 </div>
 
@@ -86,11 +101,6 @@
 
 <audio id="player"></audio>
 
-<ul id="playlist">
-	<li data-ogg="http://www.lunerouge.org/sons/sf/LRWeird%201%20by%20Lionel%20Allorge.ogg">Space 1</li>
-	<li data-ogg="http://www.lunerouge.org/sons/sf/LRWeird%202%20by%20Lionel%20Allorge.ogg">Space 2</li>
-	<li data-ogg="http://www.lunerouge.org/sons/sf/LRWeird%203%20by%20Lionel%20Allorge.ogg">Space Lab</li>
-</ul>
 <div id="playbar">
 <button class="playbutton" id="previous">Previous Song</button>
 <button class="playbutton" id="stop">Stop</button>
