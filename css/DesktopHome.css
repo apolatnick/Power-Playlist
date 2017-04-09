@@ -277,6 +277,7 @@ ul {
   /*border: 2px solid white;*/
   float: right;
   margin-right: 5%;
+
 }
 
 .suggDesk li {
@@ -284,6 +285,9 @@ ul {
   height: 40px;
   text-align: left;
   margin-right: 0;
+  list-style-type: none;
+  padding-left: -40px;
+  margin-left: -40px;
 }
 
 /*#songList {
