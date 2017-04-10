@@ -9,11 +9,10 @@ function addToPlaylist(song){
 	$("#empty").remove();
 	$("#emptyalso").remove();
 	var example = document.querySelector(".example");
-	example.appendChild(document.createElement('li')).textContent= song;
+	example.appendChild(song);
 	$("li:even").css("background-color", "#333333");
 
 }
-
 
 
 $(document).ready(function searchSong(){
@@ -39,14 +38,15 @@ $(document).ready(function searchSong(){
 						{
 							//concatinate song name with artist maybe? make it a variable and use it for text content?
 							var obj;
-							obj = newList.appendChild(document.createElement("li"));
+							//obj = newList.appendChild(document.createElement("li"));
 							var txt = aResult[i][0] + " - " + aResult[i][1];
-							obj.textContent = txt;
-							$(obj).attr("data",aResult[i][5]);
-							$(obj).addClass("searchList");
+							$(newList).append('<li class="searchList" data-ogg='+aResult[i][5]+'>'+txt+'</li>');
+							//obj.textContent = txt;
+							//$(obj).attr("data-ogg",aResult[i][5]);
+							//$(obj).addClass("searchList");
 							$(".searchList").click(function(e){
 								alert(e.target);
-								addToPlaylist(e.target.textContent);
+								addToPlaylist(e.target);
 							});
 
 						}
@@ -60,8 +60,6 @@ $(document).ready(function searchSong(){
 						{
 							newList.appendChild(document.createElement("li")).textContent = "no results found";
 						}
-
-
 						//var nextSong = document.getElementById("#dropdown li");
 						//nextSong.addEventListener("onclick", function(){alert("success");});
         	}
