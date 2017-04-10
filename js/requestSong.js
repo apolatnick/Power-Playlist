@@ -1,3 +1,5 @@
+var clicked = 0;
+
 function loadFunction()
 {
 	alert("hi");
@@ -16,16 +18,18 @@ function addToPlaylist(song){
 
 
 $(document).ready(function searchSong(){
-	$("#tags").keypress(function(event){
+	$("#find").keypress(function(event){
 		if(event.which == 13){
+			//if(clicked == 0){
+				//clicked++;
     		var aResult;
 				var newList;
 		jQuery.ajax({
     		type: "POST",
-    		url: 'http://localhost:8888/~apolatnick/Power-Playlist3/master/php/search.php',
+    		url: 'http://localhost:8888/~apolatnick/Power-Playlist4/master/php/search.php',
     		dataType: 'json',
 				async: false,
-    		data: {functionname: 'find', arguments: [$("#tags").val()]},
+    		data: {functionname: 'find', arguments: [$("#find").val()]},
 
     		success: function (result,textstatus) {
         	if(!('error' in result))
@@ -40,13 +44,14 @@ $(document).ready(function searchSong(){
 							var obj;
 							//obj = newList.appendChild(document.createElement("li"));
 							var txt = aResult[i][0] + " - " + aResult[i][1];
-							$(newList).append('<li class="searchList" data-ogg='+aResult[i][5]+'>'+txt+'</li>');
+							$(newList).append('<li class="searchList" data-ogg='+aResult[i][5]+'>'+aResult[i][0]+'<br /><p class="artist">'+aResult[i][1]+'</p></li>');
 							//obj.textContent = txt;
 							//$(obj).attr("data-ogg",aResult[i][5]);
 							//$(obj).addClass("searchList");
 							$(".searchList").click(function(e){
-								alert(e.target);
+								//clicked = 0;
 								addToPlaylist(e.target);
+								//newList.remove();
 							});
 
 						}
@@ -79,12 +84,7 @@ $(document).ready(function searchSong(){
 				alert(message);
 			}
 			});
-			// newList.addEventListener("cleck",function(e)){
-			// 	if(e.target && e.target.nodeName === "LI")
-			// 	{
-			// 		alert("hi");
-			// 	}
-			// });
+		//}
 		}
 	});
 });
