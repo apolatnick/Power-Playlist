@@ -87,9 +87,9 @@ $(window).on('resize', function() {
 	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p>
 		<div id="songList">
 			<ol class='example' id="playlist">
-					<li data-ogg="music/Fitz.mp3"><div class="songItem">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></div></li>
-					<li data-ogg="music/Adele.mp3">Hello<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
-					<li data-ogg="music/Santana.mp3">Smooth<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+					<li data-ogg="music/Fitz.mp3"><div class="songItem">Don't Gotta Work it Out<br /><p class="artist">Artist Here</p></div></li>
+					<li data-ogg="music/Adele.mp3">Hello<br /><p class="artist">Artist Here</p></li>
+					<li data-ogg="music/Santana.mp3">Smooth<br /><p class="artist">Artist Here</p></li>
 			</ol>
 		</div>
 </div>
@@ -111,10 +111,6 @@ $(window).on('resize', function() {
 <!-- <audio controls style="bottom: 130px; width: 100%; position: fixed;">
   <source src="horse.ogg" type="audio/ogg">
   <source src="horse.mp3" type="audio/mpeg">
-
-<div class="countSection"><button type="button" class="downCounter" onclick="downCount()">DownVote</button><button type="button" class="upCounter" onclick="upCount()">upVote</button><p class="countNum">0</p>
-
-
 </audio> -->
 
 <audio id="player"></audio>
@@ -125,14 +121,6 @@ $(window).on('resize', function() {
 <button class="playbutton" id="next">Next Song</button>
 <button type="button" id="button" onclick="addSong()" style="color: black; width: 150px; clear: both;">Add Song</button>
 <p id="time" style="color: black; font-size: 2em;">Current Time in song is: </p>
-<script>
-_player.addEventListener("timeupdate", function() {
-    var currentTime =_player.currentTime;
-    var duration = _player.duration;
-		document.getElementById("time").innerHtml += currentTime;
-    // $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
-});
-</script>
 
 </div>
 
@@ -156,6 +144,8 @@ function playlistItemClick(clickedElement) {
 	_player.play();
 }
 
+
+
 function playNext() {
 	var selected = _playlist.querySelector("li.selected");
 	if (selected && selected.nextSibling) {
@@ -170,6 +160,14 @@ if (selected && selected.previousSibling) {
 }
 }
 // event listeners
+
+_player.addEventListener("timeupdate", function() {
+    var currentTime =_player.currentTime;
+    var duration = _player.duration;
+		document.getElementById("time").innerHtml += currentTime;
+    // $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
+});
+
 _stop.addEventListener("click", function () {
 	_player.pause();
 });
