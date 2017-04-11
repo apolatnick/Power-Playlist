@@ -7,20 +7,22 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/DesktopHome.css"</link>
+
 </head>
 <body>
 	<div id="header">
-  	 <h1 style="height: 60px; margin-top: 0; padding-top: 15px; vertical-align: middle; font-size: 1.5em; font-weight: bold; padding-left: 2%;">PowerPlaylist:</h1>
+    <img src="images/thickHand.png" style="float: left; height: 45px; padding-top: 7.5px; margin-left: 10px; margin-left: 10px;"></img>
+  	 <h1 id="title">PowerPlaylist:</h1>
  </div>
  <div style="text-align: center; padding-top; 200px;">
    <h3 id="pintitle">Enter your party's PIN below</h3>
 </div>
  <div id="pinpage">
-   <form id="pin">
-     <input class ="pin" type="text"><input class="pin"type="text"><input class="pin" type="text"><input class="pin" type="text"><br />
+   <form id="pinBar">
+     <input class ="pin" type="number" id="one"><input class="pin" type="number" id="two"><input class="pin" type="number" id="three"><input class="pin" type="number" id="four"><br />
   </form>
   <div style="text-align: center;">
-   <button id="submitPin" type="button"> Join the Party</button>
+   <button id="submitPin" type="button" onclick="sendPin()"> Join the Party</button>
  </div>
  </div>
 
@@ -36,3 +38,14 @@
     <p style="text-align: center;">Copyright 2017 Sara Cassella / Alexander Polatnick / Kristen Ronhovde</p>
 </div>
 </html>
+
+<script>
+  function sendPin() {
+    var one = document.getElementById("one");
+    var two = document.getElementById("two");
+    var three = document.getElementById("three");
+    var four = document.getElementById("four");
+    var str = one.value + two.value + three.value + four.value;
+    alert(str);
+  }
+</script>

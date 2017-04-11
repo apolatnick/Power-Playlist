@@ -64,10 +64,18 @@ $(window).on('resize', function() {
 		$("li:even").css("background-color", "#333333");
 	}
 	</script>
+	<script>
+		function upVote() {
+
+		}
+	</script>
+	<script>
+		function downVote() {
+			
+		}
+	</script>
 	<link rel="stylesheet" type="text/css" href="css/DesktopHome.css"></link>
 </head>
-
-
 
 
 <body>
@@ -87,7 +95,7 @@ $(window).on('resize', function() {
 	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p>
 		<div id="songList">
 			<ol class='example' id="playlist">
-					<li data-ogg="music/Fitz.mp3"><div class="songItem">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></div></li>
+					<li data-ogg="music/Fitz.mp3">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
 					<li data-ogg="music/Adele.mp3">Hello<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
 					<li data-ogg="music/Santana.mp3">Smooth<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
 			</ol>
@@ -121,14 +129,6 @@ $(window).on('resize', function() {
 <button class="playbutton" id="next">Next Song</button>
 <button type="button" id="button" onclick="addSong()" style="color: black; width: 150px; clear: both;">Add Song</button>
 <p id="time" style="color: black; font-size: 2em;">Current Time in song is: </p>
-<script>
-_player.addEventListener("timeupdate", function() {
-    var currentTime =_player.currentTime;
-    var duration = _player.duration;
-		document.getElementById("time").innerHtml += currentTime;
-    // $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
-});
-</script>
 
 </div>
 
@@ -146,7 +146,7 @@ function playlistItemClick(clickedElement) {
 	if (selected) {
 			selected.classList.remove("selected");
 	}
-	clickedElement.classList.add("selected");
+	// clickedElement.classList.add("selected");
 
 	_player.src = clickedElement.getAttribute("data-ogg");
 	_player.play();
@@ -155,15 +155,16 @@ function playlistItemClick(clickedElement) {
 function playNext() {
 	var selected = _playlist.querySelector("li.selected");
 	if (selected && selected.nextSibling) {
+			alert("made it!");
 			playlistItemClick(selected.nextSibling);
 	}
 }
 
 function playPrevious() {
-var selected = _playlist.querySelector("li.selected");
-if (selected && selected.previousSibling) {
-	playlistItemClick(selected.previousSibling);
-}
+	var selected = _playlist.querySelector("li.selected");
+	if (selected && selected.previousSibling) {
+		playlistItemClick(selected.previousSibling);
+	}
 }
 // event listeners
 _stop.addEventListener("click", function () {
@@ -180,6 +181,13 @@ _playlist.addEventListener("click", function (e) {
 	if (e.target && e.target.nodeName === "LI") {
 			playlistItemClick(e.target);
 	}
+});
+
+_player.addEventListener("timeupdate", function() {
+    var currentTime =_player.currentTime;
+    var duration = _player.duration;
+		document.getElementById("time").innerHtml += currentTime;
+    // $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
 });
 </script>
 
