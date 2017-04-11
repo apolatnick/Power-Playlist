@@ -209,10 +209,6 @@ ul {
   margin-top: 40px;
 }
 
-.smallSearch {
-  color: pink;
-}
-
 .playPhone
 {
   width: 100%;
@@ -237,7 +233,6 @@ ul {
   font-size: .8em;
   color: grey;
 }
-
 
 .suggPhone {
   width: 88%;
@@ -288,29 +283,6 @@ ul {
   margin-top: 7px;
   margin-right: -50px;
 }
-
-
-
-/*.countSection {
-  float: right;
-}
-
-.downCounter {
-  color: black;
-  display: inline-block;
-  margin-top: 0;
-  float: right;
-}
-
-.countNum {
-  display: inline-block;
-}
-
-.upCounter {
-  color: black;
-  display: inline-block;
-  float: right;
-}*/
 
 .suggDesk {
   width: 25%;
