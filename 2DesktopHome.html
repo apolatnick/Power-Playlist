@@ -41,11 +41,34 @@ $(window).on('resize', function() {
 				$('#labelForSearch').addClass('labelPhone');
 				$('#searchbar').removeClass('searchBarDesk');
 				$('#searchbar').addClass('searchBarPhone');
+				$('#title').removeClass('deskTitle');
+				$('#title').addClass('phoneTitle');
+				$('#welcome').removeClass('deskWelcome');
+				$('#welcome').addClass('phoneWelcome');
+				$('#invite').removeClass('deskInvite');
+				$('#invite').addClass('phoneInvite');
+				$('#pinNum').removeClass('deskPinNum');
+				$('#pinNum').addClass('phonePinNum');
     }else{
         $('#playlistColumn').addClass('playDesk');
         $('#playlistColumn').removeClass('playPhone');
 				$('#suggestedSongColumn').addClass('suggDesk');
 				$('#suggestedSongColumn').removeClass('suggPhone');
+				$('#upNext').removeClass('upNextTitle');
+				$('#find').removeClass('smallSearch');
+				$('#find').addClass('search');
+				$('#labelForSearch').addClass('labelDesk');
+				$('#labelForSearch').removeClass('labelPhone');
+				$('#searchbar').addClass('searchBarDesk');
+				$('#searchbar').removeClass('searchBarPhone');
+				$('#title').addClass('deskTitle');
+				$('#title').removeClass('phoneTitle');
+				$('#welcome').addClass('deskWelcome');
+				$('#welcome').removeClass('phoneWelcome');
+				$('#invite').addClass('deskInvite');
+				$('#invite').removeClass('phoneInvite');
+				$('#pinNum').addClass('deskPinNum');
+				$('#pinNum').removeClass('phonePinNum');
     }
 })
 </script>
@@ -81,7 +104,7 @@ $(window).on('resize', function() {
 <body>
 	<div id="header">
 		<img src="images/thickHand.png" id="logo"></img>
-	 <h1 id="title">PowerPlaylist<div id="welcome">Welcome Admin</div><div id="invite">Invite others with this PIN number: <div id="pinNum">1234</div></div></h1>
+	 <h1 id="title" class="deskTitle">PowerPlaylist<div id="welcome" class="deskWelcome">Welcome Admin</div><div id="invite" class="deskInvite">Invite others with this PIN number: <div id="pinNum" class="deskPinNum">1234</div></div></h1>
  </div>
 <div id="searchbar" class="searchBarDesk">
 	<label for="find"  id="labelForSearch" class="labelDesk">Search</label>
@@ -123,7 +146,7 @@ $(window).on('resize', function() {
 
 <audio id="player"></audio>
 
-<div id="playbar">
+<div id="playbar" class="hostPlaybar">
 <button class="playbutton" id="previous">Previous Song</button>
 <button class="playbutton" id="stop">Stop</button>
 <button class="playbutton" id="next">Next Song</button>
@@ -146,7 +169,7 @@ function playlistItemClick(clickedElement) {
 	if (selected) {
 			selected.classList.remove("selected");
 	}
-	// clickedElement.classList.add("selected");
+	clickedElement.classList.add("selected");
 
 	_player.src = clickedElement.getAttribute("data-ogg");
 	_player.play();
@@ -182,6 +205,8 @@ _playlist.addEventListener("click", function (e) {
 			playlistItemClick(e.target);
 	}
 });
+
+// $().click(fuction)
 
 _player.addEventListener("timeupdate", function() {
     var currentTime =_player.currentTime;
