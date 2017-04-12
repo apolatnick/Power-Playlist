@@ -40,7 +40,7 @@ h1 {
   margin-left: 10px;
 }
 
-#title {
+.deskTitle {
   height: 60px;
   margin-top: 0;
   padding-top: 15px;
@@ -50,13 +50,28 @@ h1 {
   padding-left: 65px;
 }
 
-#welcome {
+.phoneTitle {
+  height: 60px;
+  margin-top: 0;
+  padding-top: 10px;
+  font-weight: bold;
+  padding-left: 65px;
+  font-size: 1.2em;
+}
+
+.deskWelcome {
   font-weight: 100;
   display: inline-block;
   margin-left: 20px;
 }
 
-#invite {
+.phoneWelcome {
+    display: inline-block;
+    margin-left: 20px;
+    font-weight: 100;
+}
+
+.deskInvite {
   display: inline-block;
   margin-left: 70%;
   font-size: .9em;
@@ -64,8 +79,19 @@ h1 {
   margin-top: -25px;
 }
 
+.phoneInvite {
+  display: hidden;
+}
+
 /*Pin Number displayed on the Host's Page*/
-#pinNum {
+.deskPinNum {
+  display: inline-block;
+  font-size: .9em;
+  font-weight: bold;
+  margin-top: -25px;
+}
+
+.phonePinNum {
   display: inline-block;
   font-size: .9em;
   font-weight: bold;
@@ -257,9 +283,22 @@ ul {
 .suggPhone {
   width: 88%;
   margin: auto;
+  margin-bottom: 100px;
   overflow: visible;
-  display: block
+  display: block;
 }
+
+.suggPhone li {
+    background-color: black;
+    height: 40px;
+    text-align: left;
+    margin-right: 0;
+    list-style-type: none;
+    padding-left: -40px;
+    margin-left: -40px;
+}
+
+
 
 .playDesk {
   width: 60%;
@@ -337,7 +376,7 @@ ul {
     font-weight: bold
 }
 
-#playbar {
+.hostPlaybar {
   width: 100%;
   text-align: center;
   background-color: #6c36c1;
@@ -346,9 +385,19 @@ ul {
   position: fixed;
 }
 
+.guestPlaybar {
+  width: 100%;
+  text-align: center;
+  background-color: #6c36c1;
+  height: 50px;
+  bottom: 0px;
+  position: fixed;
+}
+
 .playbutton {
   color: black;
-  margin-top: 10px;
+  margin-top: 5px;
+
 }
 
 
