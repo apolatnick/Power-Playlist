@@ -89,40 +89,93 @@ $(window).on('resize', function() {
 	}
 	</script>
 	<script>
-		function upVote(event) {
-			var list;
+		function upVotePlaylist(event) {
 			var x = event.target;
-			alert(x.tagName);
-
+			var y = x.parentNode;
+			var z = y.childNodes[0];
+			var title = z.textContent;
+			alert(title);
+			upVote(title, 1);
 			//get upvote image - .attr('src', 'images/clickedUpVote.png');
+			//need to get the name of song and 1 for playlist 2 for suggested list
+			//call AP's function upVoteSong()
 		}
 	</script>
 	<script>
-		function downVote(event) {
-			var list;
+		function downVotePlaylist(event) {
 			var x = event.target;
-			alert(x.tagName);
+			var y = x.parentNode;
+			var z = y.childNodes[0];
+			var title = z.textContent;
+			alert(title);
+			downVote(title, 1);
 			//if i remove the onclick after aps function is called..... but only would work the one time.
-
+			//call AP's function downVote();
 			//get downvote image - .attr('src', 'images/clickedDownVote.png');
+			//need to get the name of song and 1 for playlist
+		}
+	</script>
+	<script>
+		function upVoteSuggList(event) {
+			var x = event.target;
+			var y = x.parentNode;
+			var z = y.childNodes[0];
+			var title = z.textContent;
+			alert(title);
+			upVote(title, 2);
+			//get upvote image - .attr('src', 'images/clickedUpVote.png');
+			//need to get the name of song and 1 for playlist 2 for suggested list
+			//call AP's function upVoteSong()
+		}
+	</script>
+	<script>
+		function downVoteSuggList(event) {
+			var x = event.target;
+			var y = x.parentNode;
+			var z = y.childNodes[0];
+			var title = z.textContent;
+			alert(title);
+			downVote(title, 2);
+			//if i remove the onclick after aps function is called..... but only would work the one time.
+			//call AP's function downVote();
+			//get downvote image - .attr('src', 'images/clickedDownVote.png');
+			//need to get the name of song and 2 for suggested list
 		}
 	</script>
 	<script>
 		function removeSong(event) {
 			var x = event.target;
-			alert(x.tagName);
+			var y = x.parentNode;
+			var z = y.childNodes[0];
+			var title = z.textContent;
+			alert(title);
+			deleteSong(title, 1);
+			//need to get the name of song and 1 for playlist
+			//call AP's function deleteSong()
 		}
 	</script>
 	<script>
-		function approveSong(event) {
+		function appSong(event) {
 			var x = event.target;
-			alert(x.tagName);
+			var y = x.parentNode;
+			var z = y.childNodes[0];
+			var title = z.textContent;
+			alert(title);
+			approveSong(title);
+			//call AP's function approveSong()
+			//need to get the name of the song to pass into AP's function
 		}
 	</script>
 	<script>
 		function rejectSong(event) {
 			var x = event.target;
-			alert(x.tagName);
+			var y = x.parentNode;
+			var z = y.childNodes[0];
+			var title = z.textContent;
+			alert(title);
+			deleteSong(title, 2);
+			//call AP's function deleteSong()
+			//need to get the name of song and 2 for suggested list
 		}
 	</script>
 	<link rel="stylesheet" type="text/css" href="css/DesktopHome.css"></link>
@@ -146,9 +199,9 @@ $(window).on('resize', function() {
 	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p>
 		<div id="songList">
 			<ol class='example' id="playlist">
-					<li class="evenSong" data-ogg="music/Fitz.mp3">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote" onclick="upVote(event)"><img src="images/downVote.png" class="downvote" onclick="downVote(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">Artist Here</p></li>
-					<li class="evenSong" data-ogg="music/Adele.mp3">Hello<img src="images/upVote.png" class="upVote" onclick="upVote(event)"><img src="images/downVote.png" class="downvote" onclick="downVote(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">Artist Here</p></li>
-					<li class="evenSong" data-ogg="music/Santana.mp3">Smooth<img src="images/upVote.png" class="upVote" onclick="upVote(event)"><img src="images/downVote.png" class="downvote" onclick="downVote(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">Artist Here</p></li>
+					<li class="evenSong" data-ogg="music/Fitz.mp3">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">Artist Here</p></li>
+					<li class="evenSong" data-ogg="music/Adele.mp3">Hello<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">Artist Here</p></li>
+					<li class="evenSong" data-ogg="music/Santana.mp3">Smooth<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">Artist Here</p></li>
 			</ol>
 		</div>
 </div>
@@ -159,9 +212,9 @@ $(window).on('resize', function() {
 	<p id="emptyalso" style="color: white; text-align: center;">No songs suggested by guests.</p>
 	<div id="songList2" style="width: 100%; margin-top: 0px; position: relative;">
 		<ol>
-			<li><img src="images/addSong.png" class="addButton" onclick="approveSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">Suggested Song 1<img src="images/upVote.png" class="upVote" onclick="upVote(event)"><img src="images/downVote.png" class="downvote" onclick="downVote(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
-			<li><img src="images/addSong.png" class="addButton" onclick="approveSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">Suggested Song 2<img src="images/upVote.png" class="upVote" onclick="upVote(event)"><img src="images/downVote.png" class="downvote" onclick="downVote(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
-			<li><img src="images/addSong.png" class="addButton" onclick="approveSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">Suggested Song 3<img src="images/upVote.png" class="upVote" onclick="upVote(event)"><img src="images/downVote.png" class="downvote" onclick="downVote(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+			<li><img src="images/addSong.png" class="addButton" onclick="appSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">Suggested Song 1<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+			<li><img src="images/addSong.png" class="addButton" onclick="appSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">Suggested Song 2<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+			<li><img src="images/addSong.png" class="addButton" onclick="appSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">Suggested Song 3<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
 		</ol>
 	</div>
 </div>
