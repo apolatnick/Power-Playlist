@@ -27,29 +27,9 @@
 	} );
 </script>-->
 <!--Script for adjusting CSS for Screen Viewing Size-->
-<script>
+<!-- <script>
 $(window).on('resize', function() {
-    if($(window).width() < 480) {
-        $('#playlistColumn').addClass('playPhone');
-        $('#playlistColumn').removeClass('playDesk');
-				$('#suggestedSongColumn').addClass('suggPhone');
-				$('#suggestedSongColumn').removeClass('suggDesk');
-				$('#upNext').addClass('upNextTitle');
-				$('#find').addClass('smallSearch');
-				$('#find').removeClass('search');
-				$('#labelForSearch').removeClass('labelDesk');
-				$('#labelForSearch').addClass('labelPhone');
-				$('#searchbar').removeClass('searchBarDesk');
-				$('#searchbar').addClass('searchBarPhone');
-				$('#title').removeClass('deskTitle');
-				$('#title').addClass('phoneTitle');
-				$('#welcome').removeClass('deskWelcome');
-				$('#welcome').addClass('phoneWelcome');
-				$('#invite').removeClass('deskInvite');
-				$('#invite').addClass('phoneInvite');
-				$('#pinNum').removeClass('deskPinNum');
-				$('#pinNum').addClass('phonePinNum');
-    }else{
+    if($(window).width() > 480) {
 			$('#playlistColumn').addClass('playDesk');
 			$('#playlistColumn').removeClass('playPhone');
 			$('#suggestedSongColumn').addClass('suggDesk');
@@ -69,9 +49,29 @@ $(window).on('resize', function() {
 			$('#invite').removeClass('phoneInvite');
 			$('#pinNum').addClass('deskPinNum');
 			$('#pinNum').removeClass('phonePinNum');
+    }else{
+			$('#playlistColumn').addClass('playPhone');
+			$('#playlistColumn').removeClass('playDesk');
+			$('#suggestedSongColumn').addClass('suggPhone');
+			$('#suggestedSongColumn').removeClass('suggDesk');
+			$('#upNext').addClass('upNextTitle');
+			$('#find').addClass('smallSearch');
+			$('#find').removeClass('search');
+			$('#labelForSearch').removeClass('labelDesk');
+			$('#labelForSearch').addClass('labelPhone');
+			$('#searchbar').removeClass('searchBarDesk');
+			$('#searchbar').addClass('searchBarPhone');
+			$('#title').removeClass('deskTitle');
+			$('#title').addClass('phoneTitle');
+			$('#welcome').removeClass('deskWelcome');
+			$('#welcome').addClass('phoneWelcome');
+			$('#invite').removeClass('deskInvite');
+			$('#invite').addClass('phoneInvite');
+			$('#pinNum').removeClass('deskPinNum');
+			$('#pinNum').addClass('phonePinNum');
     }
 })
-</script>
+</script> -->
 <!--script for the striping of the list and the drag and drop -->
 	<script>
 	$(function  () {
@@ -97,24 +97,23 @@ $(window).on('resize', function() {
 
 		}
 	</script>
-	<link rel="stylesheet" type="text/css" href="css/DesktopHome.css"></link>
+	<link rel="stylesheet" type="text/css" href="css/GuestHome.css"></link>
 </head>
-
 
 <body>
 	<div id="header">
 		<img src="images/thickHand.png" id="logo"></img>
-	 <h1 id="title" class="deskTitle">PowerPlaylist<div id="welcome" class="deskWelcome">Welcome Guest</div><div id="invite" class="deskInvite">Party PIN number: <div id="pinNum" class="deskPinNum">1234</div></div></h1>
+	 <h1 id="title" class="phoneTitle">PowerPlaylist<div id="invite" class="phoneInvite"><div style="font-weight: bold; display: inline-block;">Invite others</div> with this pin number: <br /><div id="pinNum" class="phonePinNum">1234</div></div></h1>
  </div>
-<div id="searchbar" class="searchBarDesk">
-	<label for="find"  id="labelForSearch" class="labelDesk">Search</label>
+<div id="searchbar" class="searchBarPhone">
+	<label for="find"  id="labelForSearch" class="labelPhone">Search</label>
 	<!-- <input id="tags" class="search" type="text" name="search" placeholder="Search for a song.."> -->
-		<input id="find" class="search" type="text" name="search" placeholder="Search for a song..">
+		<input id="find" class="smallSearch" type="text" name="search" placeholder="Search for a song..">
 </div>
 <div id="dropdown">
 </div>
-<div id="playlistColumn" class="playDesk">
-	<h2 id="upNext">Up Next</h2>
+<div id="playlistColumn" class="playPhone">
+	<h2 id="upNext" class="upNextTitle">Up Next</h2>
 	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p>
 		<div id="songList">
 			<ol class='example' id="playlist">
@@ -124,8 +123,8 @@ $(window).on('resize', function() {
 			</ol>
 		</div>
 </div>
-<div id="suggestedSongColumn" class="suggDesk" display="inline-block" style="overflow: auto;">
-	<h2 style="color: white; margin-top: none; display: block; font-size: 1.5em; text-align: left; margin-bottom: 0;">Suggested Songs</h2>
+<div id="suggestedSongColumn" class="suggPhone" display="inline-block" style="overflow: auto;">
+	<h2 style="color: white; margin-top: none; display: block; font-size: 3em; text-align: left; margin-bottom: 0;">Suggested Songs</h2>
 	<p style="color: grey; margin-top: 6px; font-size: 1em;">Waiting for host's approval</p>
 	<hr style="background-color: grey;"/>
 	<p id="emptyalso" style="color: white; text-align: center;">No songs suggested by guests.</p>
@@ -155,7 +154,7 @@ $(window).on('resize', function() {
 
 </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 // globals
 var _player = document.getElementById("player"),
 	_playlist = document.getElementById("playlist"),
@@ -206,19 +205,17 @@ _playlist.addEventListener("click", function (e) {
 	}
 });
 
-// $().click(fuction)
+// $().click(fuction)-->
 
+
+<script>
 _player.addEventListener("timeupdate", function() {
     var currentTime =_player.currentTime;
     var duration = _player.duration;
-		document.getElementById("time").innerHtml += currentTime;
-    // $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
+		$("#time").innerHtml += currentTime;
+    $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
 });
 </script>
-
-
-
-
 
 <!-- <div id="navigation">
 	<ul>

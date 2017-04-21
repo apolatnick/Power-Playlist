@@ -150,9 +150,13 @@ $(window).on('resize', function() {
 <button class="playbutton" id="previous">Previous Song</button>
 <button class="playbutton" id="stop">Stop</button>
 <button class="playbutton" id="next">Next Song</button>
+<button class="playbutton" id="playSong">Play</button>
+<div id="songStatus" style="width: 600px; height: 10px; background-color: pink; display: inline-block"><div id="hp_range"</div></div>
 <button type="button" id="button" onclick="addSong()" style="color: black; width: 150px; clear: both;">Add Song</button>
-<p id="time" style="color: black; font-size: 2em;">Current Time in song is: </p>
-
+<p id="time" style="color: white; font-size: 1em; display: inline-block;">Current Time in song is: </p>
+<!-- <div class="hp_slide" style="display: inline-block">
+     <div class="hp_range"></div> -->
+</div>
 </div>
 
 <script type="text/javascript">
@@ -177,16 +181,15 @@ function playlistItemClick(clickedElement) {
 
 function playNext() {
 	var selected = _playlist.querySelector("li.selected");
-	if (selected && selected.nextSibling) {
-			alert("made it!");
-			playlistItemClick(selected.nextSibling);
+	if (selected && selected.nextElementSibling) {
+			playlistItemClick(selected.nextElementSibling);
 	}
 }
 
 function playPrevious() {
 	var selected = _playlist.querySelector("li.selected");
-	if (selected && selected.previousSibling) {
-		playlistItemClick(selected.previousSibling);
+	if (selected && selected.previousElementSibling) {
+		playlistItemClick(selected.previousElementSibling);
 	}
 }
 // event listeners
@@ -198,6 +201,10 @@ _nextSong.addEventListener("click", playNext);
 
 _previous.addEventListener("click", playPrevious);
 
+$("#next").click(playNext());
+
+$("#previous").click(playPrevious());
+
 _player.addEventListener("ended", playNext);
 
 _playlist.addEventListener("click", function (e) {
@@ -208,11 +215,11 @@ _playlist.addEventListener("click", function (e) {
 
 // $().click(fuction)
 
-_player.addEventListener("timeupdate", function() {
-    var currentTime =_player.currentTime;
-    var duration = _player.duration;
-		document.getElementById("time").innerHtml += currentTime;
-    // $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
+$("#player").bind("timeupdate", function() {
+    var currentTime = $("#player").currentTime;
+    var duration = $("#player").duration;
+		$("#time").innerHtml += currentTime;
+    $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
 });
 </script>
 
