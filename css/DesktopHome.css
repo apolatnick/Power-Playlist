@@ -326,7 +326,7 @@ ul {
   display: inline-block;
   width: 20px;
   float: right;
-  margin-right: 7%;
+  margin-right: 9%;
 }
 
 .downVote {
@@ -337,10 +337,31 @@ ul {
   margin-right: -20px;
 }
 
+.deleteSong {
+  display: inline-block;
+  width: 20px;
+  float: right;
+  margin-right: -75px;
+  margin-top: 6px;
+}
+
 .counter {
   float: right;
   margin-top: 7px;
-  margin-right: -50px;
+  margin-right: -40px;
+}
+
+.addButton {
+  display: inline-block;
+  float: left;
+  width: 45px;
+}
+
+.rejectButton {
+  display: inline-block;
+  float: left;
+  width: 45px;
+  margin-right: 10px;
 }
 
 .suggDesk {
@@ -357,7 +378,7 @@ ul {
 
 .suggDesk li {
   background-color: black;
-  height: 40px;
+  height: 45px;
   text-align: left;
   margin-right: 0;
   list-style-type: none;
@@ -398,6 +419,20 @@ ul {
   color: black;
   margin-top: 5px;
 
+}
+
+/*.hp_slide{
+    z-index: 12;
+    overflow: visible;
+    width:100%;
+    background:white;
+    height:25px;
+}*/
+.hp_range{
+    overflow:visible;
+    width:0;
+    background:green;
+    height:10px;
 }
 
 
