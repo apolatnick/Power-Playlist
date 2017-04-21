@@ -84,7 +84,8 @@ $(window).on('resize', function() {
 		$("#emptyalso").remove();
 		var example = document.querySelector(".example");
 		example.appendChild(document.createElement('li')).textContent='new Song';
-		$("li:even").css("background-color", "#333333");
+		// $(".example:even").css("background-color", "#333333");
+		$(".evenSong:even").css("background-color", "#333333");
 	}
 	</script>
 	<script>
@@ -118,9 +119,9 @@ $(window).on('resize', function() {
 	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p>
 		<div id="songList">
 			<ol class='example' id="playlist">
-					<li data-ogg="music/Fitz.mp3">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
-					<li data-ogg="music/Adele.mp3">Hello<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
-					<li data-ogg="music/Santana.mp3">Smooth<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+					<li class="evenSong" data-ogg="music/Fitz.mp3">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong"><br /><p class="artist">Artist Here</p></li>
+					<li class="evenSong" data-ogg="music/Adele.mp3">Hello<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong"><br /><p class="artist">Artist Here</p></li>
+					<li class="evenSong" data-ogg="music/Santana.mp3">Smooth<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong"><br /><p class="artist">Artist Here</p></li>
 			</ol>
 		</div>
 </div>
@@ -130,10 +131,10 @@ $(window).on('resize', function() {
 	<hr style="background-color: grey;"/>
 	<p id="emptyalso" style="color: white; text-align: center;">No songs suggested by guests.</p>
 	<div id="songList2" style="width: 100%; margin-top: 0px; position: relative;">
-		<ol class="example">
-			<li>Suggested Song 1<br /><p class="artist">Artist Here</p></li>
-			<li>Suggested Song 2<br /><p class="artist">Artist Here</p></li>
-			<li>Suggested Song 3<br /><p class="artist">Artist Here</p></li>
+		<ol>
+			<li><img src="images/addSong.png" class="addButton"><img src="images/rejectSong.png" class="rejectButton">Suggested Song 1<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+			<li><img src="images/addSong.png" class="addButton"><img src="images/rejectSong.png" class="rejectButton">Suggested Song 2<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+			<li><img src="images/addSong.png" class="addButton"><img src="images/rejectSong.png" class="rejectButton">Suggested Song 3<img src="images/upVote.png" class="upVote"><img src="images/downVote.png" class="downvote"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
 		</ol>
 	</div>
 </div>
