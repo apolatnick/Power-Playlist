@@ -169,15 +169,22 @@ $(window).on('resize', function() {
 	<script>
 		function rejectSong(event) {
 			var x = event.target;
+			alert(x);
 			var y = x.parentNode;
-			var z = y.childNodes[0];
-			var title = z.textContent;
-			alert(title);
-			deleteSong(title, 2);
+			alert(y);
+			alert(y.textContent);
+			var z = y.childNodes[3];
+			// alert(z);
+			alert(z.textContent);
+			// var title = z.textContent;
+			// alert(title);
+			// deleteSong(title, 2);
 			//call AP's function deleteSong()
 			//need to get the name of song and 2 for suggested list
 		}
 	</script>
+
+
 	<link rel="stylesheet" type="text/css" href="css/DesktopHome.css"></link>
 </head>
 
@@ -220,25 +227,31 @@ $(window).on('resize', function() {
 </div>
 </body>
 
-<!-- <audio controls style="bottom: 130px; width: 100%; position: fixed;">
-  <source src="horse.ogg" type="audio/ogg">
-  <source src="horse.mp3" type="audio/mpeg">
-</audio> -->
+<!-- <audio id="player" ontimeupdate="document.getElementById('time').innerHTML = Math.floor(this.currentTime) + ' / ' + Math.floor(this.duration) + ' seconds'; "></audio> -->
+<audio id="player" ontimeupdate="updatePlayBar()"></audio>
 
-<audio id="player"></audio>
+<div id="playbar" class="hostPlaybar" style="text-align: center;">
+<p style="display: inline-block; float: left; margin-left: 5%; margin-right: 3%;"> Now Playing...</p>
+<button class="playbutton" id="previous" style="float: left; display: inline-block;">Previous Song</button>
+<button class="playbutton" id="stop" style="float: left; display: inline-block;">Stop</button>
+<button class="playbutton" id="next" style="float: left; display: inline-block;">Next Song</button>
+<button class="playbutton" id="playSong" style="float: left; display: inline-block;">Play</button>
+<div id="playBar" style="display: inline-block; width: 600px; height: 10px; background-color: #3e26c6;"><div id="range" style="height: 10px; width: 0%; background-color: grey;"></div></div>
 
-<div id="playbar" class="hostPlaybar">
-<button class="playbutton" id="previous">Previous Song</button>
-<button class="playbutton" id="stop">Stop</button>
-<button class="playbutton" id="next">Next Song</button>
-<button class="playbutton" id="playSong">Play</button>
-<div id="songStatus" style="width: 600px; height: 10px; background-color: pink; display: inline-block"><div id="hp_range"</div></div>
-<button type="button" id="button" onclick="addSong()" style="color: black; width: 150px; clear: both;">Add Song</button>
 <p id="time" style="color: white; font-size: 1em; display: inline-block;">Current Time in song is: </p>
-<!-- <div class="hp_slide" style="display: inline-block">
-     <div class="hp_range"></div> -->
+
 </div>
 </div>
+<script>
+function updatePlayBar() {
+	document.getElementById('time').innerHTML = Math.floor(player.currentTime) + ' / ' + Math.floor(player.duration) + ' seconds';
+	var num = Math.floor(player.currentTime);
+	var denom = Math.floor(player.duration);
+	var percent = num / denom;
+	percent = percent * 100;
+	document.getElementById("range").style.width = percent + "%";
+}
+</script>
 
 <script type="text/javascript">
 // globals
