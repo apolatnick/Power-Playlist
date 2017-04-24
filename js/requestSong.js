@@ -4,7 +4,7 @@ function addToPlaylist(song,aResult){
 	$("#empty").remove();
 	$("#emptyalso").remove();
 	var example = document.querySelector(".example");
-	example.appendChild(song);
+	//example.appendChild(song);
 	$(".evenSong:even").css("background-color", "#333333");
 
 	var arrayResult;
@@ -19,9 +19,15 @@ function addToPlaylist(song,aResult){
 				if(!('error' in result))
 				{
 					arrayResult = result.output;
-					alert(arrayResult[0][0]);
-					// $(".example").empty();
+					alert(arrayResult.length);
+					$(".example").empty();
 					// $("#dropdown").empty();
+					for(var i = 0; i < arrayResult.length; i++)
+					{
+						alert(i);
+						alert(arrayResult[i][0]);
+						$(".example").append('<li class="searchList evenSong" data-ogg='+aResult[i][5]+'>'+aResult[i][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+aResult[i][1]+'</p></li>');
+					}
 
 				}
 				else
@@ -165,7 +171,7 @@ $(document).ready(function searchSong(){
 						{
 							var obj;
 							var txt = aResult[i][0] + " - " + aResult[i][1];
-							$(newList).append('<li class="searchList evenSong" data-ogg='+aResult[i][5]+'>'+aResult[i][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+aResult[i][1]+'</p></li>');
+							$(newList).append('<li class="dropList" data-ogg='+aResult[i][5]+'>'+aResult[i][0]+'<br /><p class="dropArtist">'+aResult[i][1]+'</p></li>');
 							$(".searchList").click(function(e){
 								addToPlaylist(e.target,aResult);
 							});
