@@ -232,22 +232,47 @@ ul {
   width: 50%;
   margin: auto;
   color: white;
+  list-style-type: none;
+  z-index: 100;
+  position: relative;
+  /*background-color: black;*/
 }
 
-#dropdown li{
-  background-color: black;
-  width: 100%;
+.dropList {
+  background-color: black;
+  width: 50%;
+  margin: auto;
+  text-align: left;
+  padding-top: 12px;
+  padding-left: 5%;
+  margin-bottom: 0;
+  height: 40px;
+  z-index: 100;
+  border: 2px solid grey;
+}
+
+.dropArtist {
+  color: grey;
+  margin-top: 1px;
+  font-size: .8em;
+  z-index: 100;
+
+}
+/*#dropdown li{
+  background-color: pink;
+  width: 50%;
   padding-top: 12px;
-  vertical-align: middle;
-  height: 30px;
+  vertical-align: 0;
+  height: 20px;
   text-align: left;
   padding-left: 12px;
+  background-color: pink;
 }
 
 #dropdown li:hover {
   font-weight: bold;
   color: green;
-}
+}*/
 
 .upNextTitle {
   font-size: 1.2em;
@@ -373,7 +398,6 @@ ul {
   /*border: 2px solid white;*/
   float: right;
   margin-right: 5%;
-
 }
 
 .suggDesk li {
