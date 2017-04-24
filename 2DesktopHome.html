@@ -119,7 +119,7 @@ $(window).on('resize', function() {
 		function upVoteSuggList(event) {
 			var x = event.target;
 			var y = x.parentNode;
-			var z = y.childNodes[0];
+			var z = y.childNodes[2];
 			var title = z.textContent;
 			alert(title);
 			upVote(title, 2);
@@ -132,7 +132,7 @@ $(window).on('resize', function() {
 		function downVoteSuggList(event) {
 			var x = event.target;
 			var y = x.parentNode;
-			var z = y.childNodes[0];
+			var z = y.childNodes[2];
 			var title = z.textContent;
 			alert(title);
 			downVote(title, 2);
@@ -158,7 +158,7 @@ $(window).on('resize', function() {
 		function appSong(event) {
 			var x = event.target;
 			var y = x.parentNode;
-			var z = y.childNodes[0];
+			var z = y.childNodes[2];
 			var title = z.textContent;
 			alert(title);
 			approveSong(title);
@@ -169,16 +169,12 @@ $(window).on('resize', function() {
 	<script>
 		function rejectSong(event) {
 			var x = event.target;
-			alert(x);
 			var y = x.parentNode;
-			alert(y);
-			alert(y.textContent);
-			var z = y.childNodes[3];
-			// alert(z);
+			var z = y.childNodes[2]; // gets you the song name
 			alert(z.textContent);
-			// var title = z.textContent;
+			var title = z.textContent;
 			// alert(title);
-			// deleteSong(title, 2);
+			deleteSong(title, 2);
 			//call AP's function deleteSong()
 			//need to get the name of song and 2 for suggested list
 		}
