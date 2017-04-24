@@ -1,8 +1,8 @@
 
-function addToPlaylist(song,aResult){
+function addToPlaylist(aResult){
 	//add to html playlist
 	$("#empty").remove();
-	$("#emptyalso").remove();
+	// $("#emptyalso").remove();
 	var example = document.querySelector(".example");
 	//example.appendChild(song);
 	$(".evenSong:even").css("background-color", "#333333");
@@ -19,14 +19,18 @@ function addToPlaylist(song,aResult){
 				if(!('error' in result))
 				{
 					arrayResult = result.output;
-					alert(arrayResult.length);
+					//alert(arrayResult.length);
+					// for(var j = 0; j < arrayResult.length; j++)
+					// {
+					// 	alert(arrayResult[j][0]);
+					// }
 					$(".example").empty();
-					// $("#dropdown").empty();
-					for(var i = 0; i < arrayResult.length; i++)
+					$("#dropdown").empty();
+					for(var it = 0; it < arrayResult.length; it++)
 					{
-						alert(i);
-						alert(arrayResult[i][0]);
-						$(".example").append('<li class="searchList evenSong" data-ogg='+aResult[i][5]+'>'+aResult[i][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+aResult[i][1]+'</p></li>');
+						//alert(i);
+						//alert(arrayResult[i][0]);
+						$(".example").append('<li class="searchList evenSong" data-ogg='+arrayResult[it][5]+'>'+arrayResult[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+arrayResult[it][1]+'</p></li>');
 					}
 
 				}
@@ -172,8 +176,8 @@ $(document).ready(function searchSong(){
 							var obj;
 							var txt = aResult[i][0] + " - " + aResult[i][1];
 							$(newList).append('<li class="dropList" data-ogg='+aResult[i][5]+'>'+aResult[i][0]+'<br /><p class="dropArtist">'+aResult[i][1]+'</p></li>');
-							$(".searchList").click(function(e){
-								addToPlaylist(e.target,aResult);
+							$(".dropList").click(function(e){
+								addToPlaylist(aResult);
 							});
 
 						}
