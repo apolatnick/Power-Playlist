@@ -1,0 +1,697 @@
+html, body {
+  margin:0px;
+  padding:0px;
+}
+
+* {
+  font-family: helvetica;
+  color: white;
+}
+
+body {
+   background-color: black;
+}
+
+
+
+#header {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: url(../images/gradientWaves.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  /*  background-color: #6c36c1;    This was our original purple - save for accents*/
+    width: 100%;
+    height: 60px;
+}
+
+h1 {
+  /*font-size: 3em;
+  font-weight: 100;*/
+
+}
+
+#logo {
+  float: left;
+  height: 45px;
+  padding-top: 7.5px;
+  margin-left: 10px;
+  margin-left: 10px;
+}
+
+.deskTitle {
+  height: 60px;
+  margin-top: 0;
+  padding-top: 15px;
+  vertical-align: middle;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding-left: 65px;
+}
+
+.phoneTitle {
+  height: 60px;
+  margin-top: 0;
+  padding-top: 10px;
+  font-weight: bold;
+  padding-left: 65px;
+  font-size: 1.2em;
+}
+
+.deskWelcome {
+  font-weight: 100;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.phoneWelcome {
+    display: inline-block;
+    margin-left: 20px;
+    font-weight: 100;
+}
+
+.deskInvite {
+  display: inline-block;
+  margin-left: 70%;
+  font-size: .9em;
+  font-weight: 100;
+  margin-top: -25px;
+}
+
+.phoneInvite {
+  display: hidden;
+}
+
+/*Pin Number displayed on the Host's Page*/
+.deskPinNum {
+  display: inline-block;
+  font-size: .9em;
+  font-weight: bold;
+  margin-top: -25px;
+}
+
+.phonePinNum {
+  display: inline-block;
+  font-size: .9em;
+  font-weight: bold;
+  margin-top: -25px;
+}
+
+#navigation {
+  font-size: 1em;
+  position: fixed;
+  width: 100%;
+  /*bottom: 30px;*/
+  bottom: 0;
+  background-color: #333333;
+  /*background-color: black;*/
+  left: 0;
+  right: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navlink {
+    float: left;
+    width: 33.3%;
+    background-color: #333333;
+}
+
+/*.borderLeft {
+  border-right: .1px solid white;
+  top: 20%;
+  bottom: 20%;
+}*/
+
+.navlink a {
+    display: block;
+    color: grey;
+    text-align: center;
+    padding: 30px 16px;
+    text-decoration: none;
+}
+
+.navlink a:hover {
+    color: white;
+}
+
+.navlink a.active {
+  color: white;
+}
+
+.searchBarDesk {
+  margin: auto;
+  margin-top: 4%;
+  width: 60%;
+}
+
+.searchBarPhone {
+  width: 100%;
+  margin-top: 10%;
+}
+
+.search {
+  color: black;
+  width: 80%;
+  height: 50px;
+  font-size: 1.25em;
+  border-radius: 25px;
+  border: none;
+  /*background-image: url('search-icon.png');*/
+  background-size: 23px 23px;
+  background-position: 2% 50%;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 33px;
+  outline: none;
+}
+
+.smallSearch {
+  color: black;
+  width: 68%;
+  height: 35px;
+  font-size: 1.25em;
+  border-radius: 25px;
+  border: none;
+  /*background-image: url('search-icon.png');*/
+  background-size: 23px 23px;
+  background-position: 2% 50%;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 33px;
+  outline: none;
+}
+
+.labelDesk {
+  padding-right: 10px;
+  vertical-align: 0%;
+  font-size: 1.25em;
+  color: grey;
+  padding-bottom: 300px;
+}
+
+/*.labelDesk-placeholder {
+  color: green;
+}*/
+
+.labelPhone {
+  padding-right: 8px;
+  padding-left: 25px;
+  vertical-align: middle;
+  font-size: 1em;
+  color: grey;
+}
+
+
+.ui-autocomplete {
+    /*color: green;
+    border-radius: 5px;
+    border: 2px solid grey;*/
+}
+
+.ui-autocomplete li {
+  background-color: black;
+  width: 100%;
+  padding-top: 12px;
+  vertical-align: middle;
+  height: 30px;
+  text-align: left;
+  padding-left: 12px;
+}
+
+
+#dropdown {
+  width: 50%;
+  margin: auto;
+  color: white;
+  list-style-type: none;
+  z-index: 100;
+  position: relative;
+  /*background-color: black;*/
+}
+
+.dropList {
+  background-color: black;
+  width: 50%;
+  margin: auto;
+  text-align: left;
+  padding-top: 12px;
+  padding-left: 5%;
+  margin-bottom: 0;
+  height: 40px;
+  z-index: 100;
+  border: 2px solid grey;
+}
+
+.dropArtist {
+  color: grey;
+  margin-top: 1px;
+  font-size: .8em;
+  z-index: 100;
+
+}
+/*#dropdown li{
+  background-color: pink;
+  width: 50%;
+  padding-top: 12px;
+  vertical-align: 0;
+  height: 20px;
+  text-align: left;
+  padding-left: 12px;
+  background-color: pink;
+}
+
+#dropdown li:hover {
+  font-weight: bold;
+  color: green;
+}*/
+
+.upNextTitle {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 40px;
+}
+
+.playPhone
+{
+  width: 100%;
+  margin-top: 4%;
+  margin: auto;
+  overflow: visible;
+  display: block;
+}
+/*This needs to be fixed since the lines are larger than desktop*/
+.playPhone li{
+  width: 100%;
+  height: 50px;
+  font-size: 1.2em;
+  text-align: left;
+  padding-left: 8px;
+  vertical-align: middle;
+  padding-top: 10px;
+}
+
+.artist {
+  margin-top: 1px;
+  font-size: .8em;
+  color: grey;
+}
+
+.suggPhone {
+  width: 88%;
+  margin: auto;
+  margin-bottom: 100px;
+  overflow: visible;
+  display: block;
+}
+
+.suggPhone li {
+    background-color: black;
+    height: 40px;
+    text-align: left;
+    margin-right: 0;
+    list-style-type: none;
+    padding-left: -40px;
+    margin-left: -40px;
+}
+
+
+
+.playDesk {
+  width: 60%;
+  margin-top: 20px;
+  margin: auto;
+  overflow: visible;
+  display: block;
+  float: left;
+  margin-left: 2.5%;
+  margin-right: none;
+  margin-bottom: 200px;
+  /*border: 2px solid white;*/
+}
+
+.playDesk li {
+    height: 40px;
+    text-align: center;
+    background-color: black;
+    text-align: left;
+    padding-left: 75px;
+    padding-top: 10px;
+}
+
+.upVote {
+  display: inline-block;
+  width: 20px;
+  float: right;
+  margin-right: 9%;
+}
+
+.downVote {
+  display: inline-block;
+  width: 20px;
+  float: right;
+  margin-top: 20px;
+  margin-right: -20px;
+}
+
+.deleteSong {
+  display: inline-block;
+  width: 20px;
+  float: right;
+  margin-right: -75px;
+  margin-top: 6px;
+}
+
+.counter {
+  float: right;
+  margin-top: 7px;
+  margin-right: -40px;
+}
+
+.addButton {
+  display: inline-block;
+  float: left;
+  width: 45px;
+}
+
+.rejectButton {
+  display: inline-block;
+  float: left;
+  width: 45px;
+  margin-right: 10px;
+}
+
+.suggDesk {
+  width: 25%;
+  margin-top: 20px;
+  margin: auto;
+  overflow: visible;
+  display: block;
+  /*border: 2px solid white;*/
+  float: right;
+  margin-right: 5%;
+}
+
+.suggDesk li {
+  background-color: black;
+  height: 45px;
+  text-align: left;
+  margin-right: 0;
+  list-style-type: none;
+  padding-left: -40px;
+  margin-left: -40px;
+}
+
+/*#songList {
+  border: 2px solid #333333;
+  border-color: white;
+}*/
+
+
+
+.selected {
+    font-weight: bold
+}
+
+.hostPlaybar {
+  width: 100%;
+  text-align: center;
+  background-color: #6c36c1;
+  height: 40px;
+  bottom: 100px;
+  position: fixed;
+}
+
+.guestPlaybar {
+  width: 100%;
+  text-align: center;
+  background-color: #6c36c1;
+  height: 50px;
+  bottom: 0px;
+  position: fixed;
+}
+
+.playbutton {
+  color: black;
+  margin-top: 5px;
+
+}
+
+/*.hp_slide{
+    z-index: 12;
+    overflow: visible;
+    width:100%;
+    background:white;
+    height:25px;
+}*/
+.hp_range{
+    overflow:visible;
+    width:0;
+    background:green;
+    height:10px;
+}
+
+
+li {
+  height: 100px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: black;
+  border-width: 2px;
+  border-color: #333333;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight:;
+  text-align: center;
+  margin-top: 50px;
+}
+
+h3 {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+}
+
+#pintitle {
+   color: grey;
+   font-size: 2em;
+   font-weight: 100;
+   margin-bottom: 1px;
+}
+
+#pinpage {
+  width: 60%;
+  margin: auto;
+}
+#pinBar {
+  width: 460px;
+  /*height: 100px;*/
+  margin: auto;
+  padding-top: 1%;
+}
+.pin {
+  color: black;
+  font-size: 2em;
+  width: 75px;
+  height: 75px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#submitPin {
+  color: white;
+  font-size: 1.5em;
+  font-weight: lighter;
+  margin-top: 40px;
+  padding: 15px 30px 15px 30px;
+  background-color: #6c36c1;
+  width: 220px;
+  border-radius: 35px;
+  border: none;
+  outline: none;
+}
+
+#hostButton {
+  color: lightgrey;
+  font-size: 1em;
+  font-weight: lighter;
+  margin-top: 1px;
+  padding: 20px;
+  background-color: #3e26c6;
+  width: 200px;
+  border-radius: 35px;
+  border: none;
+  margin-bottom: 30px;
+  outline: none;
+}
+
+#createYourOwn {
+  color: grey;
+  font-weight: lighter;
+  margin-bottom: 1px;
+  margin-top: 45px;
+}
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ol.example li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ol.example li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+
+#footer {
+  position: fixed;
+  width: 100%;
+  background-color: #333333;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.copyrightDesk {
+  text-align: center;
+  color: white;
+}
+
+@media only screen and (max-width: 1000px) {
+  #header {
+      position: relative;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-image: url(../images/gradientWaves.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    /*  background-color: #6c36c1;    This was our original purple - save for accents*/
+      width: 100%;
+      height: 150px;
+  }
+
+  #logo {
+      float: left;
+      height: 110px;
+      padding-top: 20px;
+      margin-left: 35px;
+  }
+
+  .deskTitle {
+    height: 150px;
+    margin-top: 0;
+    padding-top: 50px;
+    font-weight: bold;
+    padding-left: 150px;
+    font-size: 3em;
+  }
+
+  #pintitle {
+    margin-top: 200px;
+     color: grey;
+     font-size: 3.5em;
+     font-weight: 100;
+     margin-bottom: 1px;
+  }
+
+  #pinpage {
+    width: 100%;
+    margin: auto;
+  }
+
+  #pinBar {
+    width: 78%;
+    margin: auto;
+    padding-top: 5%;
+  }
+
+  .pin {
+    color: black;
+    font-size: 3em;
+    width: 150px;
+    height: 150px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+  }
+
+  #submitPin {
+    color: white;
+    font-size: 3em;
+    font-weight: lighter;
+    margin-top: 7%;
+    padding: 50px 30px 50px 30px;
+    background-color: #6c36c1;
+    width: 500px;
+    border-radius: 80px;
+    border: none;
+    outline: none;
+  }
+
+  #createYourOwn {
+    color: grey;
+    font-size: 3em;
+    font-weight: lighter;
+    margin-bottom: 1px;
+    margin-top: 45px;
+  }
+
+  #hostButton {
+    margin-top: 5%;
+    color: lightgrey;
+    font-size: 2.5em;
+    font-weight: lighter;
+    padding: 50px;
+    background-color: #3e26c6;
+    width: 460px;
+    border-radius: 80px;
+    border: none;
+    margin-bottom: 30px;
+    outline: none;
+  }
+
+  #footer {
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    background-color: #333333;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .copyrightDesk {
+    font-size: 1.7em;
+    text-align: center;
+    color: grey;
+  }
+}
