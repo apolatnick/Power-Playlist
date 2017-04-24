@@ -263,6 +263,7 @@ var _player = document.getElementById("player"),
 	_stop = document.getElementById("stop");
 	_nextSong = document.getElementById("next");
 	_previous = document.getElementById("previous");
+	_play = document.getElementById("playSong");
 
 // functions
 function playlistItemClick(clickedElement) {
@@ -292,6 +293,10 @@ function playPrevious() {
 // event listeners
 _stop.addEventListener("click", function () {
 	_player.pause();
+});
+
+_play.addEventListener("click", function () {
+	_player.play();
 });
 
 _nextSong.addEventListener("click", playNext);
