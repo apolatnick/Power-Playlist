@@ -1,17 +1,24 @@
-$(document).ready(function pinFunction(){
-	$("#enterButton").click(function(){
+// $(document).ready(function(){
+	// $("#submitPin").click(function(){
+function checkPin(){
+		var one = document.getElementById("one");
+    var two = document.getElementById("two");
+    var three = document.getElementById("three");
+    var four = document.getElementById("four");
+    var str = one.value + two.value + three.value + four.value;
 		var isCorrect;
 		jQuery.ajax({
     	type: "POST",
-    	url: 'http://localhost:8888/~apolatnick/SeniorDesign/php/approvePin.php',
+    	url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/approvePin.php',
     	dataType: 'json',
-    	data: {functionname: 'pinAuthentication', arguments: [$("#pinEntry").val()]},
+    	data: {functionname: 'pinAuthentication', arguments: [str]},
 
     	success: function (result,textstatus) {
                   	if( !('error' in result) ) {
                       	isCorrect = result.output;
 												if(isCorrect == true){
 														alert("Successful Pin Authentication");
+														//move to guest home page
 														return true;
 												}
 												alert("Invalid Pin Number");
@@ -32,5 +39,6 @@ $(document).ready(function pinFunction(){
 						alert(message);
 				}
 		});
-  });
-});
+	}
+  // });
+// });

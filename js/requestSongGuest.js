@@ -9,7 +9,7 @@ function addToSuggestedPlaylist(song,aResult){
 	var arrayResult;
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist6/master/php/playlistManager.php',
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'addToSuggestedPlaylist', arguments: [aResult]},
@@ -43,7 +43,7 @@ function upVote(song,list)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist6/master/php/playlistManager.php',
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'upVote', arguments: [song,list]},
@@ -76,7 +76,7 @@ function downVote(song,list)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist6/master/php/playlistManager.php',
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'downVote', arguments: [song,list]},
@@ -112,7 +112,7 @@ $(document).ready(function searchSong(){
 				var newList;
 		jQuery.ajax({
     		type: "POST",
-    		url: 'http://localhost:8888/~apolatnick/Power-Playlist6/master/php/search.php',
+    		url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/search.php',
     		dataType: 'json',
 				async: false,
     		data: {functionname: 'find', arguments: [$("#find").val()]},
