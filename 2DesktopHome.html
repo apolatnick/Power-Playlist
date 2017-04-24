@@ -201,6 +201,7 @@ $(window).on('resize', function() {
 </div>
 <div id="dropdown">
 </div>
+<div id="container" style="position: absolute; width: 100%; top: 170px;">
 <div id="playlistColumn" class="playDesk">
 	<h2 id="upNext">Up Next</h2>
 	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p>
@@ -225,6 +226,7 @@ $(window).on('resize', function() {
 		</ol>
 	</div>
 </div>
+</div>
 </body>
 
 <!-- <audio id="player" ontimeupdate="document.getElementById('time').innerHTML = Math.floor(this.currentTime) + ' / ' + Math.floor(this.duration) + ' seconds'; "></audio> -->
@@ -232,10 +234,15 @@ $(window).on('resize', function() {
 
 <div id="playbar" class="hostPlaybar" style="text-align: center;">
 <p style="display: inline-block; float: left; margin-left: 5%; margin-right: 3%;"> Now Playing...</p>
-<button class="playbutton" id="previous" style="float: left; display: inline-block;">Previous Song</button>
-<button class="playbutton" id="stop" style="float: left; display: inline-block;">Stop</button>
-<button class="playbutton" id="next" style="float: left; display: inline-block;">Next Song</button>
-<button class="playbutton" id="playSong" style="float: left; display: inline-block;">Play</button>
+<!-- <button class="playbutton" id="previous" style="float: left; display: inline-block;">Previous Song</button> -->
+<img src="images/previousSong.png" class="playbutton" id="previous" style="display: inline-block; float: left; width: 30px; padding-left: 5px; padding-right: 5px;">
+<!-- <button class="playbutton" id="stop" style="float: left; display: inline-block;">Stop</button> -->
+<img src="images/pauseButton.png" class="playbutton" id="stop" style="display: inline-block; float: left; width: 30px; padding-left: 5px; padding-right: 5px;">
+<!-- <button class="playbutton" id="playSong" style="float: left; display: inline-block;">Play</button> -->
+<img src="images/playButton2.png" class="playbutton" id="playSong" style="display: inline-block; float: left; width: 30px; padding-left: 5px; padding-right: 5px;">
+<!-- <button class="playbutton" id="next" style="float: left; display: inline-block;">Next Song</button> -->
+<img src="images/nextSong.png" class="playbutton" id="next" style="display: inline-block; float: left; width: 30px; padding-left: 5px; padding-right: 5px;">
+
 <div id="playBar" style="display: inline-block; width: 600px; height: 10px; background-color: #3e26c6;"><div id="range" style="height: 10px; width: 0%; background-color: grey;"></div></div>
 
 <p id="time" style="color: white; font-size: 1em; display: inline-block;">Current Time in song is: </p>
