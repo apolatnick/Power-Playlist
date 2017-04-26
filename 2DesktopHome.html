@@ -185,7 +185,7 @@ $(window).on('resize', function() {
 </head>
 
 
-<body>
+<body onload="onLoad()">
 	<div id="header">
 		<img src="images/thickHand.png" id="logo"></img>
 	 <h1 id="title" class="deskTitle">PowerPlaylist<div id="welcome" class="deskWelcome">Welcome Admin</div><div id="invite" class="deskInvite">Invite others with this PIN number: <div id="pinNum" class="deskPinNum">1234</div></div></h1>
@@ -203,9 +203,6 @@ $(window).on('resize', function() {
 	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p>
 		<div id="songList">
 			<ol class='example' id="playlist">
-					<li class="evenSong" data-ogg="music/Fitz.mp3">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">Artist Here</p></li>
-					<li class="evenSong" data-ogg="music/Adele.mp3">Hello<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">Artist Here</p></li>
-					<li class="evenSong" data-ogg="music/Santana.mp3">Smooth<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">Artist Here</p></li>
 			</ol>
 		</div>
 </div>
@@ -215,10 +212,7 @@ $(window).on('resize', function() {
 	<hr style="background-color: grey;"/>
 	<p id="emptyalso" style="color: white; text-align: center;">No songs suggested by guests.</p>
 	<div id="songList2" style="width: 100%; margin-top: 0px; position: relative;">
-		<ol>
-			<li><img src="images/addSong.png" class="addButton" onclick="appSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">Suggested Song 1<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
-			<li><img src="images/addSong.png" class="addButton" onclick="appSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">Suggested Song 2<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
-			<li><img src="images/addSong.png" class="addButton" onclick="appSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">Suggested Song 3<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+		<ol class="suggestedExample">
 		</ol>
 	</div>
 </div>
@@ -254,14 +248,15 @@ $(window).on('resize', function() {
 </div>
 </div>
 </div>
+
 <script>
 function updatePlayBar() {
 	// document.getElementById('time').innerHTML = Math.floor(player.currentTime) + ' / ' + Math.floor(player.duration) + ' seconds';
-	var song = _playlist.querySelector("li.selected");
-	var name = song.childNodes[0];
-	document.getElementById("name").innerHTML = name.textContent;
-	var artist = song.childNodes[6];
-	document.getElementById("playingArtist").innerHTML = artist.textContent;
+	// var song = _playlist.querySelector("li.selected");
+	// var name = song.childNodes[0];
+	// document.getElementById("name").innerHTML = name.textContent;
+	// var artist = song.childNodes[6];
+	// document.getElementById("playingArtist").innerHTML = artist.textContent;
 	var num = Math.floor(player.currentTime);
 	var minutes = Math.floor(num/60);
 	var seconds = num - (minutes * 60);
@@ -302,9 +297,14 @@ function playlistItemClick(clickedElement) {
 			selected.classList.remove("selected");
 	}
 	clickedElement.classList.add("selected");
-
 	_player.src = clickedElement.getAttribute("data-ogg");
 	_player.play();
+	if (selected) {
+		var name = selected.childNodes[0];
+		document.getElementById("name").innerHTML = name.textContent;
+		var artist = selected.childNodes[6];
+		document.getElementById("playingArtist").innerHTML = artist.textContent;
+	}
 }
 
 function playNext() {
