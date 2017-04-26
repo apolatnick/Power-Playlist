@@ -338,6 +338,10 @@ ul {
   /*border: 2px solid white;*/
 }
 
+.evenSong {
+  background-color: #333333;
+}
+
 .playDesk li {
     height: 40px;
     text-align: center;
