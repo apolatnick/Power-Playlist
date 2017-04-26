@@ -229,27 +229,57 @@ $(window).on('resize', function() {
 <audio id="player" ontimeupdate="updatePlayBar()"></audio>
 
 <div id="playbar" class="hostPlaybar" style="text-align: center;">
-<p style="display: inline-block; float: left; margin-left: 5%; margin-right: 3%;"> Now Playing...</p>
-<!-- <button class="playbutton" id="previous" style="float: left; display: inline-block;">Previous Song</button> -->
-<img src="images/previousSong.png" class="playbutton" id="previous" style="display: inline-block; float: left; width: 30px; padding-left: 5px; padding-right: 5px;">
-<!-- <button class="playbutton" id="stop" style="float: left; display: inline-block;">Stop</button> -->
-<img src="images/pauseButton.png" class="playbutton" id="stop" style="display: inline-block; float: left; width: 30px; padding-left: 5px; padding-right: 5px;">
-<!-- <button class="playbutton" id="playSong" style="float: left; display: inline-block;">Play</button> -->
-<img src="images/playButton2.png" class="playbutton" id="playSong" style="display: inline-block; float: left; width: 30px; padding-left: 5px; padding-right: 5px;">
+
+<p style="display: inline-block; float: left; margin-left: 4%; margin-right: 3%; color: lightgrey; width: 10%; font-size: 1.2em; margin-top: 0; padding-top: 10px;"> Now Playing...</p>
+
+<div id="songData" style="display: inline-block; float: left; width: 20%; height: 100%; margin-right: 0; margin-left: 0;">
+<p id="name" style="display: inline-block; font-weight: bold; padding-right: 7px; font-size: .8em; margin-top: 0; padding-top: 10px;">Song Name</p><p id="playingArtist" style="display: inline-block; font-weight: lighter; font-size: .8em; margin-top: 0; padding-top: 10px;">Artist</p>
+</div>
+
+<div id="playerAndTime" style="display: inline-block; width: 40%; height: 100%; text-align: center; margin-right: 0; margin-left: 0;">
+<p id="currentSeconds" style="display: inline-block; color: grey; font-size: .5em; float: left; margin-bottom: 1px;">0:00</p><p id="totalTime" style="font-size:.5em; color: grey; float: right; margin-bottom: 1px;;">0:00</p>
+<div id="playBar" style="display: inline-block; width: 100%; height: 8px; background-color: #3e26c6;"><div id="range" style="height: 8px; width: 0%; background-color: white;"></div></div>
+</div>
+
+<div id="buttons" style="display: inline-block; width: 15%; height: 100%; float: right; text-align: center; margin-right: 5%; padding-top: 5px;">
 <!-- <button class="playbutton" id="next" style="float: left; display: inline-block;">Next Song</button> -->
-<img src="images/nextSong.png" class="playbutton" id="next" style="display: inline-block; float: left; width: 30px; padding-left: 5px; padding-right: 5px;">
-
-<div id="playBar" style="display: inline-block; width: 600px; height: 10px; background-color: #3e26c6;"><div id="range" style="height: 10px; width: 0%; background-color: grey;"></div></div>
-
-<p id="time" style="color: white; font-size: 1em; display: inline-block;">Current Time in song is: </p>
-
+<img src="images/nextSongButton.png" class="playbutton" id="next" style="display: inline-block; float: right; width: 25px; padding-left: 5px; padding-right: 5px; margin: auto;">
+<!-- <button class="playbutton" id="stop" style="float: left; display: inline-block;">Stop</button> -->
+<img src="images/pauseButton.png" class="playbutton" id="stop" style="display: inline-block; float: right; width: 25px; padding-left: 5px; padding-right: 5px; margin: auto;">
+<!-- <button class="playbutton" id="playSong" style="float: left; display: inline-block;">Play</button> -->
+<img src="images/playButton.png" class="playbutton" id="playSong" style="display: inline-block; float: right; width: 25px; padding-left: 5px; padding-right: 5px; margin: auto;">
+<!-- <button class="playbutton" id="previous" style="float: left; display: inline-block;">Previous Song</button> -->
+<img src="images/previousSongButton.png" class="playbutton" id="previous" style="display: inline-block; float: right; width: 25px; padding-left: 5px; padding-right: 5px; margin: auto;">
+<!-- <p id="time" style="color: white; font-size: 1em; display: inline-block;">Current Time in song is: </p> -->
+</div>
 </div>
 </div>
 <script>
 function updatePlayBar() {
-	document.getElementById('time').innerHTML = Math.floor(player.currentTime) + ' / ' + Math.floor(player.duration) + ' seconds';
+	// document.getElementById('time').innerHTML = Math.floor(player.currentTime) + ' / ' + Math.floor(player.duration) + ' seconds';
+	var song = _playlist.querySelector("li.selected");
+	var name = song.childNodes[0];
+	document.getElementById("name").innerHTML = name.textContent;
+	var artist = song.childNodes[6];
+	document.getElementById("playingArtist").innerHTML = artist.textContent;
 	var num = Math.floor(player.currentTime);
+	var minutes = Math.floor(num/60);
+	var seconds = num - (minutes * 60);
+	if(seconds < 10) {
+		document.getElementById("currentSeconds").innerHTML = minutes + ':0' + seconds;
+	}
+	else {
+		document.getElementById("currentSeconds").innerHTML = minutes + ':' + seconds;
+	}
 	var denom = Math.floor(player.duration);
+	var durMin = Math.floor(denom/60);
+	var durSec = denom - (durMin * 60);
+	if(durSec < 10) {
+		document.getElementById("totalTime").innerHTML = durMin + ':0' + durSec;
+	}
+	else {
+		document.getElementById("totalTime").innerHTML = durMin + ':' + durSec;
+	}
 	var percent = num / denom;
 	percent = percent * 100;
 	document.getElementById("range").style.width = percent + "%";

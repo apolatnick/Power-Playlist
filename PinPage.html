@@ -7,6 +7,11 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/pinPage.css"</link>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="jq/jquery-sortable-master/source/js/jquery-sortable.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="js/pin.js"></script>
 
 </head>
 <body>
@@ -19,7 +24,7 @@
 </div>
  <div id="pinpage">
    <form id="pinBar">
-     <input class ="pin" type="number" id="one"><input class="pin" type="number" id="two"><input class="pin" type="number" id="three"><input class="pin" type="number" id="four"><br />
+     <input class ="pin" type="number" id="one" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"><input class="pin" type="number" id="two" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"><input class="pin" type="number" id="three" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"><input class="pin" type="number" id="four" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"><br />
   </form>
   <div style="text-align: center;">
    <button id="submitPin" type="button" onclick="sendPin()"> Join the Party</button>
