@@ -88,13 +88,57 @@ $(window).on('resize', function() {
 	}
 	</script>
 	<script>
-		function upVote() {
-
+		function upVotePlaylist(event) {
+			var x = event.target;
+			var y = x.parentNode;
+			var z = y.childNodes[0];
+			var title = z.textContent;
+			alert(title);
+			upVote(title, 1);
+			//get upvote image - .attr('src', 'images/clickedUpVote.png');
+			//need to get the name of song and 1 for playlist 2 for suggested list
+			//call AP's function upVoteSong()
 		}
 	</script>
 	<script>
-		function downVote() {
-
+		function downVotePlaylist(event) {
+			var x = event.target;
+			var y = x.parentNode;
+			var z = y.childNodes[0];
+			var title = z.textContent;
+			alert(title);
+			downVote(title, 1);
+			//if i remove the onclick after aps function is called..... but only would work the one time.
+			//call AP's function downVote();
+			//get downvote image - .attr('src', 'images/clickedDownVote.png');
+			//need to get the name of song and 1 for playlist
+		}
+	</script>
+	<script>
+		function upVoteSuggList(event) {
+			var x = event.target;
+			var y = x.parentNode;
+			var z = y.childNodes[2];
+			var title = z.textContent;
+			alert(title);
+			upVote(title, 2);
+			//get upvote image - .attr('src', 'images/clickedUpVote.png');
+			//need to get the name of song and 1 for playlist 2 for suggested list
+			//call AP's function upVoteSong()
+		}
+	</script>
+	<script>
+		function downVoteSuggList(event) {
+			var x = event.target;
+			var y = x.parentNode;
+			var z = y.childNodes[2];
+			var title = z.textContent;
+			alert(title);
+			downVote(title, 2);
+			//if i remove the onclick after aps function is called..... but only would work the one time.
+			//call AP's function downVote();
+			//get downvote image - .attr('src', 'images/clickedDownVote.png');
+			//need to get the name of song and 2 for suggested list
 		}
 	</script>
 	<link rel="stylesheet" type="text/css" href="css/GuestHome.css"></link>
