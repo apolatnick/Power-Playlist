@@ -1,10 +1,15 @@
+function onLoad(){
+	update();
+	setInterval(update, 20000);
+}
+
 function generateSuggestedPlaylist(ar)
 {
 	//$(".example").empty();
 	$("#dropdown").empty();
 	for(var it = 0; it < ar.length; it++)
 	{
-		$(".suggestedExample").append('<li data-ogg='+ar[it][5]+'><'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">'+ar[it][7]+'</p><br /><p class="artist">'+ar[it][1]+'</p></li>');
+		$(".suggestedExample").append('<li data-ogg='+ar[it][5]+'><'+ar[it][0]+'<img src="images/upVote.png" class="upVote" ontouchend="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" ontouchend="downVoteSuggList(event)"><p class="counter">'+ar[it][7]+'</p><br /><p class="artist">'+ar[it][1]+'</p></li>');
 	}
 }
 
@@ -18,28 +23,25 @@ function generatePlaylist(ar)
 	}
 }
 
-function addToSuggestedPlaylist(aResult){
-	//put song at the end of the playlist
-	//$("#empty").remove();
-	$("#emptyalso").remove();
-	//var example = document.querySelector("#suggestedList");
-	//example.appendChild(song);
-	//var str = JSON.stringify(aResult);
-	var arrayResult;
+function update()
+{
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 			dataType: 'json',
 			async: false,
-			data: {functionname: 'addToSuggestedPlaylist', arguments: [aResult[0]]},
+			data: {functionname: 'updatePlaylists', arguments: [1]},
 
 			success: function (result,textstatus) {
 				if(!('error' in result))
 				{
 					arrayResult = result.output;
-					//alert(arrayResult);
-					$(".suggestedExample").empty();
-					generateSuggestedPlaylist(arrayResult);
+					if(arrayResult.length == 0)
+					{
+						//show "no songs on list p tag"
+					}
+					$(".example").empty();
+					generatePlaylist(arrayResult);
 
 				}
 				else
@@ -49,7 +51,80 @@ function addToSuggestedPlaylist(aResult){
 			},
 		error: function(xhr)
 		{
-			//alert("No Search Results");
+			var response = xhr.responseText;
+			alert(response);
+			var statusMessage = xhr.status + ' ' + xhr.statusText;
+			var message  = 'Query failed, php script returned this status: ';
+			var message = message + statusMessage + ' response: ' + response;
+			alert(message);
+		}
+		});
+		jQuery.ajax({
+				type: "POST",
+				url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+				dataType: 'json',
+				async: false,
+				data: {functionname: 'updatePlaylists', arguments: [2]},
+
+				success: function (result,textstatus) {
+					if(!('error' in result))
+					{
+						arrayResult = result.output;
+						$(".suggestedExample").empty();
+						generateSuggestedPlaylist(arrayResult);
+
+					}
+					else
+					{
+						alert(result.error);
+					}
+				},
+			error: function(xhr)
+			{
+				var response = xhr.responseText;
+				alert(response);
+				var statusMessage = xhr.status + ' ' + xhr.statusText;
+				var message  = 'Query failed, php script returned this status: ';
+				var message = message + statusMessage + ' response: ' + response;
+				alert(message);
+			}
+			});
+}
+
+function addToSuggestedPlaylist(artist,aResult){
+	$("#emptyalso").empty();
+	var fl;
+	for(var i = 0; i < aResult.length; i++)
+	{
+		if(aResult[i][1] == artist)
+		{
+			fl = i;
+			break;
+		}
+	}
+	var arrayResult;
+	//alert(aResult[0]);
+	jQuery.ajax({
+			type: "POST",
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			dataType: 'json',
+			async: false,
+			data: {functionname: 'addToSuggestedPlaylist', arguments: [aResult[fl]]},
+
+			success: function (result,textstatus) {
+				if(!('error' in result))
+				{
+					arrayResult = result.output;
+					update();
+
+				}
+				else
+				{
+					alert(result.error);
+				}
+			},
+		error: function(xhr)
+		{
 			var response = xhr.responseText;
 			alert(response);
 			var statusMessage = xhr.status + ' ' + xhr.statusText;
@@ -64,7 +139,7 @@ function upVote(song,list)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'upVote', arguments: [song,list]},
@@ -73,15 +148,7 @@ function upVote(song,list)
 				if(!('error' in result))
 				{
 					arrayResult = result.output;
-					if(list == 1)
-					{
-						$(".example").empty();
-						generatePlaylist(arrayResult);
-					}
-					else{
-						$(".suggestedExample").empty();
-						generatePlaylist(arrayResult);
-					}
+					update();
 				}
 				else
 				{
@@ -90,7 +157,6 @@ function upVote(song,list)
 			},
 		error: function(xhr)
 		{
-			//alert("No Search Results");
 			var response = xhr.responseText;
 			alert(response);
 			var statusMessage = xhr.status + ' ' + xhr.statusText;
@@ -105,7 +171,7 @@ function downVote(song,list)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'downVote', arguments: [song,list]},
@@ -114,15 +180,7 @@ function downVote(song,list)
 				if(!('error' in result))
 				{
 					arrayResult = result.output;
-					if(list == 1)
-					{
-						$(".example").empty();
-						generatePlaylist(arrayResult);
-					}
-					else{
-						$(".suggestedExample").empty();
-						generatePlaylist(arrayResult);
-					}
+					update();
 				}
 				else
 				{
@@ -131,7 +189,6 @@ function downVote(song,list)
 			},
 		error: function(xhr)
 		{
-			//alert("No Search Results");
 			var response = xhr.responseText;
 			alert(response);
 			var statusMessage = xhr.status + ' ' + xhr.statusText;
@@ -149,7 +206,7 @@ $(document).ready(function searchSong(){
 				var newList;
 		jQuery.ajax({
     		type: "POST",
-    		url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/search.php',
+    		url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/search.php',
     		dataType: 'json',
 				async: false,
     		data: {functionname: 'find', arguments: [$("#find").val()]},
@@ -168,9 +225,8 @@ $(document).ready(function searchSong(){
 							$(newList).append('<li class="searchList" data-ogg='+aResult[i][5]+'>'+aResult[i][0]+'<br /><p class="artist">'+aResult[i][1]+'</p></li>');
 						}
 						$(".searchList").click(function(e){
-							//alert(e.target.textContent);
-							addToSuggestedPlaylist(e.target,aResult);
-							//newList.remove();
+							var text = e.target.childNodes[2];
+							addToSuggestedPlaylist(text.textContent,aResult);
 						});
 						if(aLength == 0)
 						{
@@ -184,7 +240,6 @@ $(document).ready(function searchSong(){
         },
 			error: function(xhr)
 			{
-				//alert("No Search Results");
 				var response = xhr.responseText;
 				alert(response);
 				var statusMessage = xhr.status + ' ' + xhr.statusText;

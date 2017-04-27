@@ -1,5 +1,6 @@
 function onLoad(){
-	setInterval(update, 15000);
+	update();
+	setInterval(update, 10000);
 }
 
 function generatePlaylist(ar)
@@ -9,6 +10,7 @@ function generatePlaylist(ar)
 	for(var it = 0; it < ar.length; it++)
 	{
 		$(".example").append('<li class="searchList evenSong" data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+ar[it][1]+'</p></li>');
+		$(".evenSong:even").css("background", "#333333");
 	}
 }
 
@@ -18,7 +20,7 @@ function generateSuggestedPlaylist(ar)
 	$("#dropdown").empty();
 	for(var it = 0; it < ar.length; it++)
 	{
-		$(".suggestedExample").append('<li data-ogg='+ar[it][5]+'><'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">'+ar[it][7]+'</p><br /><p class="artist">'+ar[it][1]+'</p></li>');
+		$(".suggestedExample").append('<li><img src="images/addSong.png" class="addButton" onclick="appSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">'+ar[it][7]+'</p><br /><p class="artist">'+ar[it][1]+'</p></li>');
 	}
 }
 
@@ -26,7 +28,7 @@ function update()
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'updatePlaylists', arguments: [1]},
@@ -35,6 +37,10 @@ function update()
 				if(!('error' in result))
 				{
 					arrayResult = result.output;
+					if(arrayResult.length == 0)
+					{
+						//show "no songs on list p tag"
+					}
 					//alert(arrayResult);
 					$(".example").empty();
 					generatePlaylist(arrayResult);
@@ -58,7 +64,7 @@ function update()
 		});
 		jQuery.ajax({
 				type: "POST",
-				url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
+				url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 				dataType: 'json',
 				async: false,
 				data: {functionname: 'updatePlaylists', arguments: [2]},
@@ -70,6 +76,13 @@ function update()
 						//alert(arrayResult);
 						$(".suggestedExample").empty();
 						generateSuggestedPlaylist(arrayResult);
+						if(arrayResult.length == 0)
+						{
+							//show p tag
+						}
+						else{
+							$("#emptyalso").empty();
+						}
 
 					}
 					else
@@ -101,14 +114,14 @@ function addToPlaylist(artist,aResult){
 			break;
 		}
 	}
-	$("#empty").remove();
+	$("#empty").empty();
 	var example = document.querySelector(".example");
-	$(".evenSong:even").css("background-color", "#333333");
+	//$(".evenSong:even").css("background-color", "#333333");
 
 	var arrayResult;
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'addToPlaylist', arguments: [aResult[fl]]},
@@ -118,9 +131,7 @@ function addToPlaylist(artist,aResult){
 				{
 					arrayResult = result.output;
 					//alert(arrayResult);
-					$(".example").empty();
-					generatePlaylist(arrayResult);
-
+					update();
 				}
 				else
 				{
@@ -144,7 +155,7 @@ function moveSong(songName1,songName2)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'moveSong', arguments: [songName1,songName2]},
@@ -153,8 +164,7 @@ function moveSong(songName1,songName2)
 				if(!('error' in result))
 				{
 					arrayResult = result.output;
-					$(".example").empty();
-					generatePlaylist(arrayResult);
+					update();
 				}
 				else
 				{
@@ -178,7 +188,7 @@ function deleteSong(song,list)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'deleteSong', arguments: [song,list]},
@@ -187,9 +197,11 @@ function deleteSong(song,list)
 				if(!('error' in result))
 				{
 					arrayResult = result.output;
-					alert(arrayResult);
-					$(".example").empty();
-					generatePlaylist(arrayResult);
+					update();
+					// if(arrayResult.length == 0)
+					// {
+					// 	document.getElementById("empty").innerHTML = "Your playlist is currently empty.";
+					// }
 				}
 				else
 				{
@@ -213,7 +225,7 @@ function approveSong(song)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/playlistManager.php',
+			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'approveSong', arguments: [song]},
@@ -222,8 +234,7 @@ function approveSong(song)
 				if(!('error' in result))
 				{
 					arrayResult = result.output;
-					$(".example").empty();
-					generatePlaylist(arrayResult);
+					update();
 				}
 				else
 				{
@@ -251,7 +262,7 @@ $(document).ready(function searchSong(){
 				var newList;
 		jQuery.ajax({
     		type: "POST",
-    		url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/search.php',
+    		url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/search.php',
     		dataType: 'json',
 				async: false,
     		data: {functionname: 'find', arguments: [$("#find").val()]},

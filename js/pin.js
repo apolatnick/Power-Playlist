@@ -9,7 +9,7 @@ function checkPin(){
 		var isCorrect;
 		jQuery.ajax({
     	type: "POST",
-    	url: 'http://localhost:8888/~apolatnick/Power-Playlist7/master/php/approvePin.php',
+    	url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/approvePin.php',
     	dataType: 'json',
     	data: {functionname: 'pinAuthentication', arguments: [str]},
 
