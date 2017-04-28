@@ -281,6 +281,8 @@ $(document).ready(function searchSong(){
 							$(newList).append('<li class="dropList" data-ogg='+aResult[i][5]+'>'+aResult[i][0]+'<br /><p class="dropArtist">'+aResult[i][1]+'</p></li>');
 						}
 						$(".dropList").click(function(e){
+							alert($("#find").val());
+							$("#find").val("");
 							var text = e.target.childNodes[2];
 							//alert(text.textContent);
 							addToPlaylist(text.textContent,aResult);
