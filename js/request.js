@@ -1,3 +1,5 @@
+var baseurl = "http://172.20.126.172:8888/~apolatnick/Power-Playlist8/master";
+
 function loadFunction()
 {
 	alert("hi");

@@ -1,3 +1,5 @@
+var baseurl = "http://10.0.0.28:80/~apolatnick/Power-Playlist8/master/php/playlistManager.php";
+
 function onLoad(){
 	update();
 	setInterval(update, 20000);
@@ -27,7 +29,8 @@ function update()
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			url: baseurl,
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'updatePlaylists', arguments: [1]},
@@ -61,7 +64,8 @@ function update()
 		});
 		jQuery.ajax({
 				type: "POST",
-				url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+				// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+				url: baseurl,
 				dataType: 'json',
 				async: false,
 				data: {functionname: 'updatePlaylists', arguments: [2]},
@@ -106,7 +110,8 @@ function addToSuggestedPlaylist(artist,aResult){
 	//alert(aResult[0]);
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			url: baseurl,
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'addToSuggestedPlaylist', arguments: [aResult[fl]]},
@@ -139,7 +144,8 @@ function upVote(song,list)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			url: baseurl,
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'upVote', arguments: [song,list]},
@@ -171,7 +177,8 @@ function downVote(song,list)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			url: baseurl,
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'downVote', arguments: [song,list]},
@@ -206,7 +213,8 @@ $(document).ready(function searchSong(){
 				var newList;
 		jQuery.ajax({
     		type: "POST",
-    		url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/search.php',
+    		// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/search.php',
+    		url: 'http://10.0.0.28:80/~apolatnick/Power-Playlist8/master/php/search.php',
     		dataType: 'json',
 				async: false,
     		data: {functionname: 'find', arguments: [$("#find").val()]},

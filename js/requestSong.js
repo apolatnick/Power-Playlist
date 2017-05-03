@@ -1,3 +1,5 @@
+var baseurl = "http://10.0.0.28:80/~apolatnick/Power-Playlist8/master/php/playlistManager.php";
+
 function onLoad(){
 	update();
 	setInterval(update, 10000);
@@ -7,11 +9,28 @@ function generatePlaylist(ar)
 {
 	//$(".example").empty();
 	$("#dropdown").empty();
+	//alert($("#name").textContent);
 	for(var it = 0; it < ar.length; it++)
 	{
-		$(".example").append('<li class="searchList evenSong" data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+ar[it][1]+'</p></li>');
-		$(".evenSong:even").css("background", "#333333");
+		if(ar[it][1] == $("#name").textContent)
+		{
+			$(".example").append('<li class="searchList evenSong selected" data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+ar[it][1]+'</p></li>');
+		}
+		else{
+			$(".example").append('<li class="searchList evenSong" data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+ar[it][1]+'</p></li>');
+			$(".evenSong:even").css("background", "#333333");
+		}
 	}
+	// var list = document.querySelector(".example");
+	// var items = list.getElementsByTagName("li");
+	// for(var i = 0; i < ar.length; i++)
+	// {
+	// 	if($("#name").textContent == items[i].childNode[0])
+	// 	{
+	// 		$(items[i]).addClass(".selected");
+	// 		break;
+	// 	}
+	// }
 }
 
 function generateSuggestedPlaylist(ar)
@@ -28,7 +47,8 @@ function update()
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			url: baseurl,
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'updatePlaylists', arguments: [1]},
@@ -64,7 +84,7 @@ function update()
 		});
 		jQuery.ajax({
 				type: "POST",
-				url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+				url: baseurl,
 				dataType: 'json',
 				async: false,
 				data: {functionname: 'updatePlaylists', arguments: [2]},
@@ -103,7 +123,6 @@ function update()
 			});
 }
 
-
 function addToPlaylist(artist,aResult){
 	var fl;
 	for(var i = 0; i < aResult.length; i++)
@@ -114,6 +133,8 @@ function addToPlaylist(artist,aResult){
 			break;
 		}
 	}
+	//aResult[fl][8] = uniqid();
+	//alert(aResult[fl][8]);
 	$("#empty").empty();
 	var example = document.querySelector(".example");
 	//$(".evenSong:even").css("background-color", "#333333");
@@ -121,7 +142,7 @@ function addToPlaylist(artist,aResult){
 	var arrayResult;
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			url: baseurl,
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'addToPlaylist', arguments: [aResult[fl]]},
@@ -155,7 +176,7 @@ function moveSong(songName1,songName2)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			url: baseurl,
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'moveSong', arguments: [songName1,songName2]},
@@ -188,7 +209,7 @@ function deleteSong(song,list)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			url: baseurl,
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'deleteSong', arguments: [song,list]},
@@ -225,7 +246,7 @@ function approveSong(song)
 {
 	jQuery.ajax({
 			type: "POST",
-			url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
+			url: baseurl,
 			dataType: 'json',
 			async: false,
 			data: {functionname: 'approveSong', arguments: [song]},
@@ -262,7 +283,7 @@ $(document).ready(function searchSong(){
 				var newList;
 		jQuery.ajax({
     		type: "POST",
-    		url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/search.php',
+    		url: 'http://10.0.0.28:80/~apolatnick/Power-Playlist8/master/php/search.php',
     		dataType: 'json',
 				async: false,
     		data: {functionname: 'find', arguments: [$("#find").val()]},
