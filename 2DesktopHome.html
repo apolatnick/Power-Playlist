@@ -94,7 +94,8 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[0];
 			var title = z.textContent;
-			alert(title);
+			x.src = "images/clickedUpVote.png";
+			// alert(title);
 			upVote(title, 1);
 			//get upvote image - .attr('src', 'images/clickedUpVote.png');
 			//need to get the name of song and 1 for playlist 2 for suggested list
@@ -107,7 +108,8 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[0];
 			var title = z.textContent;
-			alert(title);
+			x.src = "images/clickedDownVote.png";
+			// alert(title);
 			downVote(title, 1);
 			//if i remove the onclick after aps function is called..... but only would work the one time.
 			//call AP's function downVote();
@@ -121,7 +123,8 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[2];
 			var title = z.textContent;
-			alert(title);
+			x.src = "images/clickedUpVote.png";
+			// alert(title);
 			upVote(title, 2);
 			//get upvote image - .attr('src', 'images/clickedUpVote.png');
 			//need to get the name of song and 1 for playlist 2 for suggested list
@@ -134,7 +137,8 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[2];
 			var title = z.textContent;
-			alert(title);
+			x.src = "images/clickedDownVote.png";
+			// alert(title);
 			downVote(title, 2);
 			//if i remove the onclick after aps function is called..... but only would work the one time.
 			//call AP's function downVote();

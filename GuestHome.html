@@ -89,12 +89,11 @@ $(window).on('resize', function() {
 	</script>
 	<script>
 		function upVotePlaylist(event) {
-			alert("made it! upVotePlayList");
 			var x = event.target;
 			var y = x.parentNode;
 			var z = y.childNodes[0];
 			var title = z.textContent;
-			alert(title);
+			x.src = "images/clickedUpVote.png";
 			upVote(title, 1);
 			//get upvote image - .attr('src', 'images/clickedUpVote.png');
 			//need to get the name of song and 1 for playlist 2 for suggested list
@@ -103,12 +102,11 @@ $(window).on('resize', function() {
 	</script>
 	<script>
 		function downVotePlaylist(event) {
-			alert("made it! downVoteplayList");
 			var x = event.target;
 			var y = x.parentNode;
 			var z = y.childNodes[0];
 			var title = z.textContent;
-			alert(title);
+			x.src = "images/clickedDownVote.png";
 			downVote(title, 1);
 			//if i remove the onclick after aps function is called..... but only would work the one time.
 			//call AP's function downVote();
@@ -118,33 +116,35 @@ $(window).on('resize', function() {
 	</script>
 	<script>
 		function upVoteSuggList(event) {
-			alert("made it! upVoteSuggList");
 			var x = event.target;
 			var y = x.parentNode;
-			var z = y.childNodes[0];
+			var z = y.childNodes[2];
 			var title = z.textContent;
-			alert(title);
+			x.src = "images/clickedUpVote.png";
 			upVote(title, 2);
-			// get upvote image - .attr('src', 'images/clickedUpVote.png');
-			// need to get the name of song and 1 for playlist 2 for suggested list
-			// call AP's function upVoteSong()
+			//get upvote image - .attr('src', 'images/clickedUpVote.png');
+			//need to get the name of song and 1 for playlist 2 for suggested list
+			//call AP's function upVoteSong()
 		}
 	</script>
 	<script>
 		function downVoteSuggList(event) {
-			alert("made it! downVoteSuggList");
 			var x = event.target;
 			var y = x.parentNode;
-			var z = y.childNodes[0];
+			var z = y.childNodes[2];
 			var title = z.textContent;
-			alert(title);
+			x.src = "images/clickedDownVote.png";
 			downVote(title, 2);
+			//if i remove the onclick after aps function is called..... but only would work the one time.
+			//call AP's function downVote();
+			//get downvote image - .attr('src', 'images/clickedDownVote.png');
+			//need to get the name of song and 2 for suggested list
 		}
 	</script>
 	<link rel="stylesheet" type="text/css" href="css/GuestHome.css"></link>
 </head>
 
-<body>
+<body onload="onLoad()">
 	<div id="header">
 		<img src="images/thickHand.png" id="logo"></img>
 	 <h1 id="title" class="phoneTitle">PowerPlaylist<div id="invite" class="phoneInvite"><div style="font-weight: bold; display: inline-block;">Invite others</div> with this pin number: <br /><div id="pinNum" class="phonePinNum">1234</div></div></h1>
@@ -159,7 +159,7 @@ $(window).on('resize', function() {
 <div id="container" style="position: absolute; width: 100%; top: 350px;">
 <div id="playlistColumn" class="playPhone">
 	<h2 id="upNext" class="upNextTitle">Up Next</h2>
-	<p id="empty" style="text-align: center;">Your playlist is currently empty.</p>
+	<p id="empty" style="text-align: center; font-size: 2.5em;">Your playlist is currently empty.</p>
 		<div id="songList">
 			<ol class='example' id="playlist">
 					<li class="evenSong" data-ogg="music/Fitz.mp3">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
@@ -172,7 +172,7 @@ $(window).on('resize', function() {
 	<h2 style="color: white; margin-top: none; display: block; font-size: 3em; text-align: left; margin-bottom: 0;">Suggested Songs</h2>
 	<p style="color: grey; margin-top: 6px; font-size: 1em;">Waiting for host's approval</p>
 	<hr style="background-color: grey;"/>
-	<p id="emptyalso" style="color: white; text-align: center;">No songs suggested by guests.</p>
+	<p id="emptyalso" style="color: white; text-align: center; font-size: 2.5em;">No songs suggested by guests.</p>
 	<div id="songList2" style="width: 100%; margin-top: 0px; position: relative;">
 		<ol>
 			<li>Suggested Song 1<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
@@ -184,95 +184,7 @@ $(window).on('resize', function() {
 </div>
 </body>
 
-<!-- <audio controls style="bottom: 130px; width: 100%; position: fixed;">
-  <source src="horse.ogg" type="audio/ogg">
-  <source src="horse.mp3" type="audio/mpeg">
-</audio> -->
-<!--
-<audio id="player"></audio>
-
 <div id="playbar" class="guestPlaybar">
-<button class="playbutton" id="previous">Previous Song</button>
-<button class="playbutton" id="stop">Stop</button>
-<button class="playbutton" id="next">Next Song</button>
-<button type="button" id="button" onclick="addSong()" style="color: black; width: 150px; clear: both;">Add Song</button>
-<p id="time" style="color: white; font-size: 1em; display: inline-block">Current Time in song is: </p>
-
-</div> -->
-
-<!-- <script type="text/javascript">
-// globals
-var _player = document.getElementById("player"),
-	_playlist = document.getElementById("playlist"),
-	_stop = document.getElementById("stop");
-	_nextSong = document.getElementById("next");
-	_previous = document.getElementById("previous");
-
-// functions
-function playlistItemClick(clickedElement) {
-	var selected = _playlist.querySelector(".selected");
-	if (selected) {
-			selected.classList.remove("selected");
-	}
-	clickedElement.classList.add("selected");
-
-	_player.src = clickedElement.getAttribute("data-ogg");
-	_player.play();
-}
-
-function playNext() {
-	var selected = _playlist.querySelector("li.selected");
-	if (selected && selected.nextSibling) {
-			alert("made it!");
-			playlistItemClick(selected.nextSibling);
-	}
-}
-
-function playPrevious() {
-	var selected = _playlist.querySelector("li.selected");
-	if (selected && selected.previousSibling) {
-		playlistItemClick(selected.previousSibling);
-	}
-}
-// event listeners
-_stop.addEventListener("click", function () {
-	_player.pause();
-});
-
-_nextSong.addEventListener("click", playNext);
-
-_previous.addEventListener("click", playPrevious);
-
-_player.addEventListener("ended", playNext);
-
-_playlist.addEventListener("click", function (e) {
-	if (e.target && e.target.nodeName === "LI") {
-			playlistItemClick(e.target);
-	}
-});
-
-// $().click(fuction)-->
-
-
-<!-- <script>
-_player.addEventListener("timeupdate", function() {
-    var currentTime =_player.currentTime;
-    var duration = _player.duration;
-		$("#time").innerHtml += currentTime;
-    $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
-});
-</script> -->
-
-<!-- <div id="navigation">
-	<ul>
-	   <li class="navlink borderLeft"><img src="images/HomeIconWhite-02.png" style="width: 40px; padding-top: 10px;"><a href="2DesktopHome.html" class="active" style="padding-top: 14px;">Home</a></li> -->
-	  <!-- <li class="navlink borderLeft"><img src="images/MusicProvidersGrey-02.png" style="width: 60px; padding-top: 10px;"><a href="MusicProviders.html" style="padding-top: 14px;">Music Providers</a></li> -->
-	  <!-- <li class="navlink borderLeft"><img src="images/PlaylistsIconGrey-02.png" style="width: 40px; padding-top: 10px;"><a href="" style="padding-top: 14px;">Playlists</a></li> -->
-		<!-- <li class="navlink borderLeft"><img src="images/ShareIconGrey-02.png" style="width: 40px; padding-top: 8px;"><a href="" style="padding-top: 11px;">Share Pin</a></li>
-	  <li class="navlink"><img src="images/SettingsIconGrey-02.png" style="width: 40px; padding-top: 10px;"><a href="" style="padding-top: 11px;">End Party</a></li>
-	</ul>
-</div> -->
-<!-- <div id="footer">
- <p id="copyright" class="copyrightDesk">Copyright 2017 Sara Cassella / Alexander Polatnick / Kristen Ronhovde</p>
-</div> -->
+<p id="name" style="display: inline-block; font-weight: bold; padding-right: 7px; font-size: 3em; margin-top: 0; padding-top: 25px;">Song Name</p><p id="playingArtist" style="display: inline-block; font-weight: lighter; font-size: 3em; margin-top: 0; padding-top: 25px;">Artist</p>
+</div>
 </html>
