@@ -11,12 +11,18 @@ function updatePlaylists($list){
     {
       $playlist = unserialize(file_get_contents("../eventData/playlist.txt"));
     }
+    else{
+      $playlist = array();
+    }
     return array_values($playlist);
   }
   else{
     if(filesize("../eventData/suggestedPlaylist.txt") != 0)
     {
       $playlist = unserialize(file_get_contents("../eventData/suggestedPlaylist.txt"));
+    }
+    else{
+      $playlist = array();
     }
     return array_values($playlist);
   }
@@ -29,8 +35,12 @@ function addToPlaylist($input){
   {
     $playlist = unserialize(file_get_contents("../eventData/playlist.txt"));
   }
+  else{
+    $playlist = array();
+  }
   $counter = count($playlist);
   $playlist[$counter] = $input;
+  
   $playlistPHP = $playlist;
 
   $myfile = fopen("../eventData/playlist.txt", "w") or die("Unable to open file!");
@@ -308,8 +318,6 @@ function approveSong($input){
 //upVote("a",1);
 //approveSong("d");
 //moveSong("a","c");
-
-
 
 $result = array();
 if( !isset($_POST['functionname']) ){
