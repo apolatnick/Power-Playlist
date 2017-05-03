@@ -94,6 +94,7 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[0];
 			var title = z.textContent;
+			x.onclick="";
 			x.src = "images/clickedUpVote.png";
 			// alert(title);
 			upVote(title, 1);
@@ -108,6 +109,7 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[0];
 			var title = z.textContent;
+			x.onclick="";
 			x.src = "images/clickedDownVote.png";
 			// alert(title);
 			downVote(title, 1);
@@ -123,6 +125,7 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[2];
 			var title = z.textContent;
+			x.onclick="";
 			x.src = "images/clickedUpVote.png";
 			// alert(title);
 			upVote(title, 2);
@@ -137,6 +140,7 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[2];
 			var title = z.textContent;
+			x.onclick="";
 			x.src = "images/clickedDownVote.png";
 			// alert(title);
 			downVote(title, 2);
@@ -152,7 +156,7 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[0];
 			var title = z.textContent;
-			alert(title);
+			// alert(title);
 			deleteSong(title, 1);
 			//need to get the name of song and 1 for playlist
 			//call AP's function deleteSong()
@@ -164,7 +168,7 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[2];
 			var title = z.textContent;
-			alert(title);
+			// alert(title);
 			approveSong(title);
 			//call AP's function approveSong()
 			//need to get the name of the song to pass into AP's function

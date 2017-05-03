@@ -93,6 +93,7 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[0];
 			var title = z.textContent;
+			x.onclick="";
 			x.src = "images/clickedUpVote.png";
 			upVote(title, 1);
 			//get upvote image - .attr('src', 'images/clickedUpVote.png');
@@ -106,6 +107,7 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[0];
 			var title = z.textContent;
+			x.onclick="";
 			x.src = "images/clickedDownVote.png";
 			downVote(title, 1);
 			//if i remove the onclick after aps function is called..... but only would work the one time.
@@ -120,6 +122,7 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[2];
 			var title = z.textContent;
+			x.onclick="";
 			x.src = "images/clickedUpVote.png";
 			upVote(title, 2);
 			//get upvote image - .attr('src', 'images/clickedUpVote.png');
@@ -133,6 +136,7 @@ $(window).on('resize', function() {
 			var y = x.parentNode;
 			var z = y.childNodes[2];
 			var title = z.textContent;
+			x.onclick="";
 			x.src = "images/clickedDownVote.png";
 			downVote(title, 2);
 			//if i remove the onclick after aps function is called..... but only would work the one time.
