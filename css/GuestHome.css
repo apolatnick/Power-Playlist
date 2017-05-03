@@ -106,13 +106,14 @@ body {
   }
   /*This needs to be fixed since the lines are larger than desktop*/
   .playPhone li{
+    /*border: 2px solid white;*/
     width: 100%;
-    height: 120px;
-    font-size: 2.5em;
+    height: 150px;
+    font-size: 2.7em;
     text-align: left;
     padding-left: 20px;
     vertical-align: middle;
-    padding-top: 15px;
+    padding-top: 40px;
     margin-left: -20px;
     list-style-type: none;
   }
@@ -133,36 +134,39 @@ body {
   }
 
   .suggPhone li {
+    /*border: 2px solid white;*/
       background-color: black;
-      height: 120px;
-      font-size: 2.5em;
+      height: 150px;
+      font-size: 2.7em;
       text-align: left;
       margin-right: 0;
       list-style-type: none;
       padding-left: -40px;
       margin-left: -40px;
+      padding-top: 30px;
   }
 
   .upVote {
     display: inline-block;
-    width: 50px;
+    width: 90px;
     float: right;
-    margin-top: 5px;
+    margin-top: -10px;
     margin-right: 100px;
   }
 
   .downVote {
     display: inline-block;
-    width: 50px;
+    width: 90px;
     float: right;
-    margin-top: 55px;
-    margin-right: -50px;
+    margin-top: 70px;
+    margin-right: -90px;
   }
 
   .counter {
     float: right;
     margin-top: 20px;
-    margin-right: -100px;
+    margin-right: -140px;
+    font-size: 1.2em;
   }
 
   .guestPlaybar {
