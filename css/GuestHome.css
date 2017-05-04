@@ -179,17 +179,38 @@ body {
   }
 
   #dropdown {
-    width: 50%;
+    width: 63%;
+    margin-left: 25%;
+    /*margin: auto;*/
+    color: white;
+    list-style-type: none;
+    z-index: 100;
+    position: relative;
+    /*width: 50%;
     margin: auto;
     color: white;
     list-style-type: none;
     z-index: 1;
-    background-color: black;
+    background-color: black;*/
     font-size: 2.5em;
   }
 
-  .dropList {
+
+
+
+  #dropdown li {
     background-color: black;
+    width: 100%;
+    margin: auto;
+    text-align: left;
+    padding-top: 12px;
+    padding-left: 5%;
+    margin-bottom: 0;
+    height: 120px;
+    z-index: 100;
+    border: 2px solid grey;
+    font-size: 3em;
+    /*background-color: black;
     width: 50%;
     margin: auto;
     text-align: left;
@@ -197,7 +218,7 @@ body {
     padding-left: 5%;
     margin-bottom: 0;
     height: 90px;
-    z-index: 1;
+    z-index: 1;*/
   }
 
   .dropArtist {
