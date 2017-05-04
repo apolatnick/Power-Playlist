@@ -5,7 +5,7 @@
 // $d = ["d","alepol",4];
 // $e = ["e","apo",5];
 
-function updatePlaylists($list){
+function updatePlaylists($list,$id){
   if($list == 1){
     if(filesize("../eventData/playlist.txt") != 0)
     {
@@ -14,6 +14,28 @@ function updatePlaylists($list){
     else{
       $playlist = array();
     }
+    if($id!=-1) {
+      for($i = 0; $i < count($playlist); $i++)
+      {
+        if($playlist[$i][9] == 1)
+        {
+          $playlist[$i][9] = 0;
+        }
+      }
+      for($i = 0; $i < count($playlist); $i++)
+      {
+        file_put_contents("../txt/t.txt",$id);
+        if($id == $playlist[$i][8])
+        {
+          file_put_contents("../txt/debug.txt","hi");
+          $playlist[$i][9] = 1;
+          break;
+        }
+      }
+    }
+    $myfile = fopen("../eventData/playlist.txt", "w") or die("Unable to open file!");
+    fwrite($myfile, serialize($playlist));
+    fclose($myfile);
     return array_values($playlist);
   }
   else{
@@ -338,12 +360,12 @@ elseif( !isset($_POST['arguments']) ) {
 else{
 switch($_POST['functionname']) {
         case 'updatePlaylists':
-          if( !is_array($_POST['arguments']) || (count($_POST['arguments']) < 1) ) {
+          if( !is_array($_POST['arguments']) || (count($_POST['arguments']) < 2) ) {
               $result['error'] = 'Error in function arguments';
               //  file_put_contents("txt/t.txt","Error in function arguments!");
             }
             else {
-              $result['output'] = updatePlaylists($_POST['arguments'][0]);
+              $result['output'] = updatePlaylists($_POST['arguments'][0],$_POST['arguments'][1]);
               // file_put_contents("txt/t.txt",$_POST['functionname']);
             }
             break;
