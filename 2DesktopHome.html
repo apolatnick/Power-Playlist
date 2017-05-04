@@ -181,7 +181,7 @@ $(window).on('resize', function() {
 			var x = event.target;
 			var y = x.parentNode;
 			var z = y.childNodes[2]; // gets you the song name
-			alert(z.textContent);
+			// alert(z.textContent);
 			var title = z.textContent;
 			var id = y.id;
 			// alert(title);
@@ -237,7 +237,7 @@ $(window).on('resize', function() {
 <p style="display: inline-block; float: left; margin-left: 4%; margin-right: 3%; color: lightgrey; width: 10%; font-size: 1.2em; margin-top: 0; padding-top: 10px;"> Now Playing...</p>
 
 <div id="songData" style="display: inline-block; float: left; width: 20%; height: 100%; margin-right: 0; margin-left: 0;">
-<p id="name" style="display: inline-block; font-weight: bold; padding-right: 7px; font-size: .8em; margin-top: 0; padding-top: 10px;">Song Name</p><p id="playingArtist" style="display: inline-block; font-weight: lighter; font-size: .8em; margin-top: 0; padding-top: 10px;">Artist</p>
+<p id="name" style="display: inline-block; font-weight: bold; padding-right: 7px; font-size: .8em; margin-top: 0; padding-top: 10px;">Nothing Currently Playing</p><p id="playingArtist" style="display: inline-block; font-weight: lighter; font-size: .8em; margin-top: 0; padding-top: 10px;"></p>
 </div>
 
 <div id="playerAndTime" style="display: inline-block; width: 40%; height: 100%; text-align: center; margin-right: 0; margin-left: 0;">
