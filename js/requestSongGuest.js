@@ -1,8 +1,8 @@
-var baseurl = "http://10.0.0.28:80/~apolatnick/Power-Playlist8/master/php/playlistManager.php";
+var baseurl = "http://10.0.0.11:80/Power-Playlist-master/php/playlistManager.php";
 
 function onLoad(){
 	update();
-	setInterval(update, 20000);
+	setInterval(update, 3000);
 }
 
 function generateSuggestedPlaylist(ar)
@@ -22,6 +22,7 @@ function generatePlaylist(ar)
 	for(var it = 0; it < ar.length; it++)
 	{
 		$(".example").append('<li id='+ar[it][8]+' class="searchList evenSong" data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><br /><p class="artist">'+ar[it][1]+'</p></li>');
+		$(".evenSong:even").css("background", "#333333");
 	}
 }
 
@@ -214,7 +215,7 @@ $(document).ready(function searchSong(){
 		jQuery.ajax({
     		type: "POST",
     		// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/search.php',
-    		url: 'http://10.0.0.28:80/~apolatnick/Power-Playlist8/master/php/search.php',
+    		url: 'http://10.0.0.11:80/Power-Playlist-master/php/search.php',
     		dataType: 'json',
 				async: false,
     		data: {functionname: 'find', arguments: [$("#find").val()]},
