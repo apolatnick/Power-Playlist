@@ -40,7 +40,7 @@ function addToPlaylist($input){
   }
   $counter = count($playlist);
   $playlist[$counter] = $input;
-  
+  $playlist[$counter][8] = uniqid();
   $playlistPHP = $playlist;
 
   $myfile = fopen("../eventData/playlist.txt", "w") or die("Unable to open file!");
@@ -58,8 +58,12 @@ function addToSuggestedPlaylist($input){
   {
     $playlist2 = unserialize(file_get_contents("../eventData/suggestedPlaylist.txt"));
   }
+  else{
+    $playlist2 = array();
+  }
   $counter2 = count($playlist2);
   $playlist2[$counter2] = $input;
+  $playlist2[$counter2][8] = uniqid();
   $playlistPHP2 = $playlist2;
 
   $myfile2 = fopen("../eventData/suggestedPlaylist.txt", "w") or die("Unable to open file!");
@@ -77,7 +81,7 @@ function deleteSong($input,$list){
     $flag = -1;
     for($i = 0; $i < count($playlist); $i++)
     {
-      if($input == $playlist[$i][0])
+      if($input == $playlist[$i][8])
       {
         $flag = $i;
       }
@@ -110,7 +114,7 @@ function deleteSong($input,$list){
     $flag == -1;
     for($i = 0; $i < count($playlist); $i++)
     {
-      if($input == $playlist[$i][0])
+      if($input == $playlist[$i][8])
       {
         $flag = $i;
       }
@@ -181,7 +185,7 @@ function upVote($input,$list){
     $playlist = unserialize(file_get_contents("../eventData/playlist.txt"));
     for($i = 0; $i < count($playlist); $i++)
     {
-      if($input == $playlist[$i][0])
+      if($input == $playlist[$i][8])
       {
         $playlist[$i][7]++;
         break;
@@ -198,7 +202,7 @@ function upVote($input,$list){
     $playlist = unserialize(file_get_contents("../eventData/suggestedPlaylist.txt"));
     for($i = 0; $i < count($playlist); $i++)
     {
-      if($input == $playlist[$i][0])
+      if($input == $playlist[$i][8])
       {
         $playlist[$i][7]++;
         break;
@@ -217,7 +221,7 @@ function downVote($input,$list){
     $playlist = unserialize(file_get_contents("../eventData/playlist.txt"));
     for($i = 0; $i < count($playlist); $i++)
     {
-      if($input == $playlist[$i][0])
+      if($input == $playlist[$i][8])
       {
         $playlist[$i][7]--;
         break;
@@ -234,7 +238,7 @@ function downVote($input,$list){
     $playlist = unserialize(file_get_contents("../eventData/suggestedPlaylist.txt"));
     for($i = 0; $i < count($playlist); $i++)
     {
-      if($input == $playlist[$i][0])
+      if($input == $playlist[$i][8])
       {
         $playlist[$i][7]--;
         break;
@@ -269,7 +273,7 @@ function approveSong($input){
   $flag == -1;
   for($j = 0; $j < count($playlist); $j++)
   {
-    if($input == $playlist[$j][0])
+    if($input == $playlist[$j][8])
     {
       $savedArray = $playlist[$j];
       $flag = $j;
@@ -298,10 +302,13 @@ function approveSong($input){
       {
         $playlist2 = unserialize(file_get_contents("../eventData/playlist.txt"));
       }
+      else{
+        $playlist2 = array();
+      }
       $counter = count($playlist2);
       $playlist2[$counter] = $savedArray;
       //file_put_contents("test_file.txt",$playlist2[$counter]);
-      $playlistPHP = $playlist2;
+      //$playlistPHP = $playlist2;
 
       $myfile = fopen("../eventData/playlist.txt", "w") or die("Unable to open file!");
       fwrite($myfile, serialize($playlist2));
