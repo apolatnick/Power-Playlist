@@ -1,8 +1,9 @@
 var baseurl = "http://10.0.0.11:80/Power-Playlist-master/php/playlistManager.php";
+var selectId = 0;
 
 function onLoad(){
 	update();
-	setInterval(update, 3000);
+	setInterval(update, 5000);
 }
 
 function generateSuggestedPlaylist(ar)
@@ -21,6 +22,11 @@ function generatePlaylist(ar)
 	$("#dropdown").empty();
 	for(var it = 0; it < ar.length; it++)
 	{
+		if (ar[it][9] == 1) {
+			// alert(ar[it][0]);
+			$('#name').text(ar[it][0]);
+			$('#playingArtist').text(ar[it][1]);
+		}
 		$(".example").append('<li id='+ar[it][8]+' class="searchList evenSong" data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><br /><p class="artist">'+ar[it][1]+'</p></li>');
 		$(".evenSong:even").css("background", "#333333");
 	}
@@ -28,13 +34,14 @@ function generatePlaylist(ar)
 
 function update()
 {
+
 	jQuery.ajax({
 			type: "POST",
 			// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 			url: baseurl,
 			dataType: 'json',
 			async: false,
-			data: {functionname: 'updatePlaylists', arguments: [1]},
+			data: {functionname: 'updatePlaylists', arguments: [1,-1]},
 
 			success: function (result,textstatus) {
 				if(!('error' in result))
@@ -69,7 +76,7 @@ function update()
 				url: baseurl,
 				dataType: 'json',
 				async: false,
-				data: {functionname: 'updatePlaylists', arguments: [2]},
+				data: {functionname: 'updatePlaylists', arguments: [2,-1]},
 
 				success: function (result,textstatus) {
 					if(!('error' in result))
