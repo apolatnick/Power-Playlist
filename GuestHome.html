@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="js/requestSong.js"></script>
+	<script src="js/requestSongGuest.js"></script>
 	<script src="jq/jquery-sortable-master/source/js/jquery-sortable.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -78,7 +78,7 @@ $(window).on('resize', function() {
 	  $("ol.example").sortable();
 	});
 	</script>
-	<script>
+	<!-- <script>
 	function addSong() {
 		$("#empty").remove();
 		$("#emptyalso").remove();
@@ -86,7 +86,7 @@ $(window).on('resize', function() {
 		example.appendChild(document.createElement('li')).textContent='new Song';
 		$(".evenSong:even").css("background-color", "#333333");
 	}
-	</script>
+	</script> -->
 	<script>
 		function upVotePlaylist(event) {
 			var x = event.target;
@@ -95,7 +95,8 @@ $(window).on('resize', function() {
 			var title = z.textContent;
 			x.onclick="";
 			x.src = "images/clickedUpVote.png";
-			upVote(title, 1);
+			var id = y.id;
+			upVote(id, 1);
 			//get upvote image - .attr('src', 'images/clickedUpVote.png');
 			//need to get the name of song and 1 for playlist 2 for suggested list
 			//call AP's function upVoteSong()
@@ -109,7 +110,8 @@ $(window).on('resize', function() {
 			var title = z.textContent;
 			x.onclick="";
 			x.src = "images/clickedDownVote.png";
-			downVote(title, 1);
+			var id = y.id;
+			downVote(id, 1);
 			//if i remove the onclick after aps function is called..... but only would work the one time.
 			//call AP's function downVote();
 			//get downvote image - .attr('src', 'images/clickedDownVote.png');
@@ -124,7 +126,8 @@ $(window).on('resize', function() {
 			var title = z.textContent;
 			x.onclick="";
 			x.src = "images/clickedUpVote.png";
-			upVote(title, 2);
+			var id = y.id;
+			upVote(id, 2);
 			//get upvote image - .attr('src', 'images/clickedUpVote.png');
 			//need to get the name of song and 1 for playlist 2 for suggested list
 			//call AP's function upVoteSong()
@@ -138,7 +141,8 @@ $(window).on('resize', function() {
 			var title = z.textContent;
 			x.onclick="";
 			x.src = "images/clickedDownVote.png";
-			downVote(title, 2);
+			var id = y.id;
+			downVote(id, 2);
 			//if i remove the onclick after aps function is called..... but only would work the one time.
 			//call AP's function downVote();
 			//get downvote image - .attr('src', 'images/clickedDownVote.png');
@@ -166,22 +170,22 @@ $(window).on('resize', function() {
 	<p id="empty" style="text-align: center; font-size: 2.5em;">Your playlist is currently empty.</p>
 		<div id="songList">
 			<ol class='example' id="playlist">
-					<li class="evenSong" data-ogg="music/Fitz.mp3">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+					<!-- <li class="evenSong" data-ogg="music/Fitz.mp3">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
 					<li class="evenSong" data-ogg="music/Adele.mp3">Hello<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
-					<li class="evenSong" data-ogg="music/Santana.mp3">Smooth<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+					<li class="evenSong" data-ogg="music/Santana.mp3">Smooth<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li> -->
 			</ol>
 		</div>
 </div>
 <div id="suggestedSongColumn" class="suggPhone" display="inline-block" style="overflow: auto;">
 	<h2 style="color: white; margin-top: none; display: block; font-size: 3em; text-align: left; margin-bottom: 0;">Suggested Songs</h2>
-	<p style="color: grey; margin-top: 6px; font-size: 1em;">Waiting for host's approval</p>
+	<p style="color: grey; margin-top: 6px; font-size: 2em;">Waiting for host's approval</p>
 	<hr style="background-color: grey;"/>
 	<p id="emptyalso" style="color: white; text-align: center; font-size: 2.5em;">No songs suggested by guests.</p>
 	<div id="songList2" style="width: 100%; margin-top: 0px; position: relative;">
 		<ol>
-			<li>Suggested Song 1<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+			<!-- <li>Suggested Song 1<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
 			<li>Suggested Song 2<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
-			<li>Suggested Song 3<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+			<li>Suggested Song 3<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li> -->
 		</ol>
 	</div>
 </div>
