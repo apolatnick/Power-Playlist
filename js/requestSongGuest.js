@@ -11,7 +11,7 @@ function generateSuggestedPlaylist(ar)
 	$("#dropdown").empty();
 	for(var it = 0; it < ar.length; it++)
 	{
-		$(".suggestedExample").append('<li data-ogg='+ar[it][5]+'><'+ar[it][0]+'<img src="images/upVote.png" class="upVote" ontouchend="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" ontouchend="downVoteSuggList(event)"><p class="counter">'+ar[it][7]+'</p><br /><p class="artist">'+ar[it][1]+'</p></li>');
+		$(".suggestedExample").append('<li id='+ar[it][8]+' data-ogg='+ar[it][5]+'><'+ar[it][0]+'<img src="images/upVote.png" class="upVote" ontouchend="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" ontouchend="downVoteSuggList(event)"><p class="counter">'+ar[it][7]+'</p><br /><p class="artist">'+ar[it][1]+'</p></li>');
 	}
 }
 
@@ -21,7 +21,7 @@ function generatePlaylist(ar)
 	$("#dropdown").empty();
 	for(var it = 0; it < ar.length; it++)
 	{
-		$(".example").append('<li class="searchList evenSong" data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+ar[it][1]+'</p></li>');
+		$(".example").append('<li id='+ar[it][8]+' class="searchList evenSong" data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><br /><p class="artist">'+ar[it][1]+'</p></li>');
 	}
 }
 

@@ -1,4 +1,5 @@
 var baseurl = "http://10.0.0.28:80/~apolatnick/Power-Playlist8/master/php/playlistManager.php";
+var selectId;
 
 function onLoad(){
 	update();
@@ -12,25 +13,22 @@ function generatePlaylist(ar)
 	//alert($("#name").textContent);
 	for(var it = 0; it < ar.length; it++)
 	{
-		if(ar[it][1] == $("#name").textContent)
+		// if(ar[it][1] == $("#name").textContent)
+		// {
+		// 	$(".example").append('<li class="searchList evenSong selected" id='+ar[it][8]+' data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+ar[it][1]+'</p></li>');
+		// }
+		//else{
+		if(ar[it][8] == selectId)
 		{
-			$(".example").append('<li class="searchList evenSong selected" data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+ar[it][1]+'</p></li>');
+			$(".example").append('<li class="searchList evenSong selected" id='+ar[it][8]+' data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+ar[it][1]+'</p></li>');
 		}
 		else{
-			$(".example").append('<li class="searchList evenSong" data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+ar[it][1]+'</p></li>');
-			$(".evenSong:even").css("background", "#333333");
+			$(".example").append('<li class="searchList evenSong" id='+ar[it][8]+' data-ogg='+ar[it][5]+'>'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">'+ar[it][7]+'</p><img src="images/Remove.png" class="deleteSong" onclick="removeSong(event)"><br /><p class="artist">'+ar[it][1]+'</p></li>');
 		}
+		$(".evenSong:even").css("background", "#333333");
+
+		//}
 	}
-	// var list = document.querySelector(".example");
-	// var items = list.getElementsByTagName("li");
-	// for(var i = 0; i < ar.length; i++)
-	// {
-	// 	if($("#name").textContent == items[i].childNode[0])
-	// 	{
-	// 		$(items[i]).addClass(".selected");
-	// 		break;
-	// 	}
-	// }
 }
 
 function generateSuggestedPlaylist(ar)
@@ -39,12 +37,25 @@ function generateSuggestedPlaylist(ar)
 	$("#dropdown").empty();
 	for(var it = 0; it < ar.length; it++)
 	{
-		$(".suggestedExample").append('<li><img src="images/addSong.png" class="addButton" onclick="appSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">'+ar[it][7]+'</p><br /><p class="artist">'+ar[it][1]+'</p></li>');
+		$(".suggestedExample").append('<li id='+ar[it][8]+'><img src="images/addSong.png" class="addButton" onclick="appSong(event)"><img src="images/rejectSong.png" class="rejectButton" onclick="rejectSong(event)">'+ar[it][0]+'<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">'+ar[it][7]+'</p><br /><p class="artist">'+ar[it][1]+'</p></li>');
 	}
 }
 
 function update()
 {
+	//alert($('.example li').length);
+	for(var i = 0; i < $('.example li').length; i++)
+	{
+		//alert($('.example li')[i]);
+		//alert($('.example li')[i].className);
+		if($('.example li')[i].className == 'searchList evenSong selected')
+		{
+			//alert($('.example li')[i].id);
+			//alert("in if");
+			selectId = $('.example li')[i].id;
+		}
+	}
+
 	jQuery.ajax({
 			type: "POST",
 			// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
