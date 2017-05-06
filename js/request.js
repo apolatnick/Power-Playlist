@@ -1,4 +1,4 @@
-var baseurl = "http://172.20.126.172:8888/~apolatnick/Power-Playlist8/master";
+var baseurl = "http://localhost/Power-Playlist-master";
 
 function loadFunction()
 {
@@ -26,7 +26,7 @@ $(document).ready(function searchSong(){
 				var newList;
 		jQuery.ajax({
     		type: "POST",
-    		url: 'http://localhost:8888/~apolatnick/Power-Playlist2/Power-Playlist-master/php/search.php',
+    		url: 'http://localhost/Power-Playlist-master/php/search.php',
     		dataType: 'json',
 				async: false,
     		data: {functionname: 'find', arguments: [$("#tags").val()]},
