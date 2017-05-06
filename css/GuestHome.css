@@ -131,10 +131,11 @@ body {
     margin-bottom: 100px;
     overflow: visible;
     display: block;
+    margin-bottom: 200px;
+
   }
 
   .suggPhone li {
-    /*border: 2px solid white;*/
       background-color: black;
       height: 150px;
       font-size: 2.7em;
@@ -186,8 +187,17 @@ body {
     list-style-type: none;
     z-index: 100;
     position: relative;
-    font-size: 2.7em;
+    /*width: 50%;
+    margin: auto;
+    color: white;
+    list-style-type: none;
+    z-index: 1;
+    background-color: black;*/
+    font-size: 2.5em;
   }
+
+
+
 
   #dropdown li {
     background-color: black;
@@ -200,7 +210,16 @@ body {
     height: 120px;
     z-index: 100;
     border: 2px solid grey;
-    /*font-size: 3em;*/
+    font-size: 3em;
+    /*background-color: black;
+    width: 50%;
+    margin: auto;
+    text-align: left;
+    padding-top: 12px;
+    padding-left: 5%;
+    margin-bottom: 0;
+    height: 90px;
+    z-index: 1;*/
   }
 
   .dropArtist {
