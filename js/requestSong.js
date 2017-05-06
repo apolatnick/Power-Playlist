@@ -1,5 +1,5 @@
-var baseurl = "http://10.0.0.11:80/Power-Playlist-master/php/playlistManager.php";
-var selectId = 0;
+var baseurl = "http://10.0.0.28:80/~apolatnick/Power-Playlist8/master/php/playlistManager.php";
+var selectId;
 
 function onLoad(){
 	update();
@@ -62,7 +62,7 @@ function update()
 			url: baseurl,
 			dataType: 'json',
 			async: false,
-			data: {functionname: 'updatePlaylists', arguments: [1,selectId]},
+			data: {functionname: 'updatePlaylists', arguments: [1]},
 
 			success: function (result,textstatus) {
 				if(!('error' in result))
@@ -98,7 +98,7 @@ function update()
 				url: baseurl,
 				dataType: 'json',
 				async: false,
-				data: {functionname: 'updatePlaylists', arguments: [2,selectId]},
+				data: {functionname: 'updatePlaylists', arguments: [2]},
 
 				success: function (result,textstatus) {
 					if(!('error' in result))
@@ -134,11 +134,11 @@ function update()
 			});
 }
 
-function addToPlaylist(id,aResult){
+function addToPlaylist(artist,aResult){
 	var fl;
 	for(var i = 0; i < aResult.length; i++)
 	{
-		if(aResult[i][8] == id)
+		if(aResult[i][1] == artist)
 		{
 			fl = i;
 			break;
@@ -294,7 +294,7 @@ $(document).ready(function searchSong(){
 				var newList;
 		jQuery.ajax({
     		type: "POST",
-    		url: 'http://10.0.0.11:80/Power-Playlist-master/php/search.php',
+    		url: 'http://10.0.0.28:80/~apolatnick/Power-Playlist8/master/php/search.php',
     		dataType: 'json',
 				async: false,
     		data: {functionname: 'find', arguments: [$("#find").val()]},
@@ -310,16 +310,14 @@ $(document).ready(function searchSong(){
 						{
 							//var obj;
 							//var txt = aResult[i][0] + " - " + aResult[i][1];
-							$(newList).append('<li class="dropList" id='+aResult[i][8]+' data-ogg='+aResult[i][5]+'>'+aResult[i][0]+'<br /><p class="dropArtist">'+aResult[i][1]+'</p></li>');
+							$(newList).append('<li class="dropList" data-ogg='+aResult[i][5]+'>'+aResult[i][0]+'<br /><p class="dropArtist">'+aResult[i][1]+'</p></li>');
 						}
 						$(".dropList").click(function(e){
-							// alert($("#find").val());
+							//alert($("#find").val());
 							$("#find").val("");
-							//var text = e.target.childNodes[2];
-							var x = e.target;
-							var id = x.id;
-							// alert(e.target.childNodes[4]);
-							addToPlaylist(id,aResult);
+							var text = e.target.childNodes[2];
+							//alert(text.textContent);
+							addToPlaylist(text.textContent,aResult);
 						});
 						if(aLength == 0)
 						{
