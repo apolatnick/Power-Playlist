@@ -153,6 +153,7 @@ $(window).on('resize', function() {
 </head>
 
 <body onload="onLoad()">
+<!-- <body> -->
 	<div id="header">
 		<img src="images/thickHand.png" id="logo"></img>
 	 <h1 id="title" class="phoneTitle">PowerPlaylist<div id="invite" class="phoneInvite"><div style="font-weight: bold; display: inline-block;">Invite others</div> with this pin number: <br /><div id="pinNum" class="phonePinNum">1234</div></div></h1>
@@ -167,7 +168,7 @@ $(window).on('resize', function() {
 <div id="container" style="position: absolute; width: 100%; top: 350px;">
 <div id="playlistColumn" class="playPhone">
 	<h2 id="upNext" class="upNextTitle">Up Next</h2>
-	<p id="empty" style="text-align: center; font-size: 2.5em;">Your playlist is currently empty.</p>
+	<p id="empty" style="text-align: center; font-size: 2.5em;">The playlist is currently empty.</p>
 		<div id="songList">
 			<ol class='example' id="playlist">
 					<!-- <li class="evenSong" data-ogg="music/Fitz.mp3">Don't Gotta Work it Out<img src="images/upVote.png" class="upVote" onclick="upVotePlaylist(event)"><img src="images/downVote.png" class="downvote" onclick="downVotePlaylist(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
@@ -182,10 +183,10 @@ $(window).on('resize', function() {
 	<hr style="background-color: grey;"/>
 	<p id="emptyalso" style="color: white; text-align: center; font-size: 2.5em;">No songs suggested by guests.</p>
 	<div id="songList2" style="width: 100%; margin-top: 0px; position: relative;">
-		<ol>
-			<!-- <li>Suggested Song 1<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
+		<ol class="suggestedExample">
+			<li>Suggested Song 1<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
 			<li>Suggested Song 2<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
-			<li>Suggested Song 3<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li> -->
+			<li>Suggested Song 3<img src="images/upVote.png" class="upVote" onclick="upVoteSuggList(event)"><img src="images/downVote.png" class="downvote" onclick="downVoteSuggList(event)"><p class="counter">0</p><br /><p class="artist">Artist Here</p></li>
 		</ol>
 	</div>
 </div>
@@ -193,6 +194,6 @@ $(window).on('resize', function() {
 </body>
 
 <div id="playbar" class="guestPlaybar">
-<p id="name" style="display: inline-block; font-weight: bold; padding-right: 7px; font-size: 3em; margin-top: 0; padding-top: 25px;">Song Name</p><p id="playingArtist" style="display: inline-block; font-weight: lighter; font-size: 3em; margin-top: 0; padding-top: 25px;">Artist</p>
+<p id="name" style="display: inline-block; font-weight: bold; padding-right: 7px; font-size: 3em; margin-top: 0; padding-top: 25px;">Nothing Currently Playing</p><p id="playingArtist" style="display: inline-block; font-weight: lighter; font-size: 3em; margin-top: 0; padding-top: 25px;"></p>
 </div>
 </html>
