@@ -14,10 +14,17 @@ $GLOBALS['songArray'] = array();
 
 $songArray[0] = array("Hello","Adele","25",294,"Pop","music/Adele.mp3","mpeg",0,0,0);
 $songArray[1] = array("Don't Gotta Work It Out","Ftiz and The Tantrums","Picking Up The Pieces",250,"Alternative","music/Fitz.mp3","mpeg",0,0,0);
-$songArray[2] = array("The Good Life","Frank Sinatra","N/A",148,"Pop","music/Frank Sinatra.mp3","mpeg",0,0,0);
-$songArray[3] = array("It's A Man's World","James Brown","It's A Man's Man's Man's World",194,"Funk","music/James Brown.mp3","mpeg",0,0,0);
+$songArray[2] = array("The Good Life","Frank Sinatra","N/A",148,"Pop","music/Frank_Sinatra.mp3","mpeg",0,0,0);
+$songArray[3] = array("It's A Man's World","James Brown","It's A Man's Man's Man's World",194,"Funk","music/James_Brown.mp3","mpeg",0,0,0);
 $songArray[4] = array("Smooth","Santana","Supernatural",268,"Rock","music/Santana.mp3","mpeg",0,0,0);
 $songArray[5] = array("Smooth","Other Guy","Other Album",268,"Rock","music/Santana.mp3","mpeg",0,0,0);
+$songArray[6] = array("Celebration","Kool & The Gang","Celebrate!",214,"R&B","music/Celebration.mp3","mpeg",0,0,0);
+$songArray[7] = array("Eye Of The Tiger","Survivor","Eye Of The Tiger",271,"Rock","music/Eye_Of_The_Tiger.mp3","mpeg",0,0,0);
+$songArray[8] = array("Shape Of You","Ed Sheeran","%",235,"Pop","music/Shape_Of_You.mp3","mpeg",0,0,0);
+$songArray[9] = array("Stayin Alive","Bee Gees","Saturday Night Fever",243,"Pop","music/Stayin_Alive.mp3","mpeg",0,0,0);
+$songArray[10] = array("Twist And Shout","The Beatles","Please Please Me",155,"Rock","music/Twist_and_Shout.mp3","mpeg",0,0,0);
+$songArray[11] = array("Three Little Birds","Bob Marley","Exodus",181,"Raggae","music/THREE_LITTLE_BIRDS.mp3","mpeg",0,0,0);
+
 
 class song{
 	protected $name;
