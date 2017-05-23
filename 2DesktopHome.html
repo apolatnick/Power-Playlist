@@ -161,16 +161,18 @@ $(window).on('resize', function() {
 			var z = y.childNodes[0];
 			var title = z.textContent;
 			var id = y.id;
-			var selected = document.getElementsByClassName("selected")[0];
-			var selectID = selected.id;
+			if(document.getElementsByClassName("selected")[0]) {
+				var selected = document.getElementsByClassName("selected")[0];
+				var selectID = selected.id;
 
-			if(selectID == id) {
-				document.getElementById("player").pause()
-				document.getElementById("player").src = "";
-				document.getElementById("range").style.width = "0%";
-				document.getElementById("name").innerHTML = "Nothing Currently Playing";
-				document.getElementById("playingArtist").innerHTML = "";
-				document.getElementById("playSong").src = "images/playButton.png";
+				if(selectID == id) {
+					document.getElementById("player").pause()
+					document.getElementById("player").src = "";
+					document.getElementById("range").style.width = "0%";
+					document.getElementById("name").innerHTML = "Nothing Currently Playing";
+					document.getElementById("playingArtist").innerHTML = "";
+					document.getElementById("playSong").src = "images/playButton.png";
+				}
 			}
 			// alert(title);
 			deleteSong(id, 1);
