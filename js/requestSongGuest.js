@@ -1,4 +1,4 @@
-var baseurl = "http://172.21.123.107:80/~apolatnick/Power-Playlist10/master/php/playlistManager.php";
+var baseurl = "http://playlist.engr.scu.edu/Power-Playlist-master/php/playlistManager.php";
 var selectId = 0;
 
 function onLoad(){
@@ -36,6 +36,7 @@ function update()
 
 	jQuery.ajax({
 			type: "POST",
+			headers: { "cache-control": "no-cache" },
 			// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 			url: baseurl,
 			dataType: 'json',
@@ -52,7 +53,6 @@ function update()
 					}
 					$(".example").empty();
 					generatePlaylist(arrayResult);
-
 				}
 				else
 				{
@@ -62,15 +62,16 @@ function update()
 		error: function(xhr)
 		{
 			var response = xhr.responseText;
-			alert(response);
+			// alert(response);
 			var statusMessage = xhr.status + ' ' + xhr.statusText;
 			var message  = 'update 1 Query failed, php script returned this status: ';
 			var message = message + statusMessage + ' response: ' + response;
-			alert(message);
+			// alert(message);
 		}
 		});
 		jQuery.ajax({
 				type: "POST",
+				headers: { "cache-control": "no-cache" },
 				// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/playlistManager.php',
 				url: baseurl,
 				dataType: 'json',
@@ -97,11 +98,11 @@ function update()
 			error: function(xhr)
 			{
 				var response = xhr.responseText;
-				alert(response);
+				// alert(response);
 				var statusMessage = xhr.status + ' ' + xhr.statusText;
 				var message  = 'update 2 Query failed, php script returned this status: ';
 				var message = message + statusMessage + ' response: ' + response;
-				alert(message);
+				// alert(message);
 			}
 			});
 }
@@ -226,7 +227,7 @@ $(document).ready(function searchSong(){
 		jQuery.ajax({
     		type: "POST",
     		// url: 'http://localhost:8888/~apolatnick/Power-Playlist8/master/php/search.php',
-    		url: 'http://172.21.123.107:80/~apolatnick/Power-Playlist10/master/php/search.php',
+    		url: 'http://playlist.engr.scu.edu/Power-Playlist-master/php/search.php',
     		dataType: 'json',
 				async: false,
     		data: {functionname: 'find', arguments: [$("#find").val()]},
@@ -247,8 +248,13 @@ $(document).ready(function searchSong(){
 						$(".searchList").click(function(e){
 							$("#find").val("");
 							//var text = e.target.childNodes[2];
-							var text = e.target;
-							var id = text.id;
+							var x = e.target;
+							if(x.parentNode.id == "dropdown") {
+								var id = x.id;
+							}
+							else {
+								var id = x.parentNode.id;
+							}
 							//alert(id);
 							addToSuggestedPlaylist(id,aResult);
 						});

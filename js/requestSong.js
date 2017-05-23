@@ -1,9 +1,9 @@
-var baseurl = "http://172.21.123.107:80/~apolatnick/Power-Playlist10/master/php/playlistManager.php";
+var baseurl = "http://playlist.engr.scu.edu/Power-Playlist-master/php/playlistManager.php";
 var selectId = 0;
 
 function onLoad(){
 	update();
-	setInterval(update, 10000);
+	setInterval(update, 3000);
 }
 
 function generatePlaylist(ar)
@@ -356,7 +356,7 @@ $(document).ready(function searchSong(){
 				var newList;
 		jQuery.ajax({
     		type: "POST",
-    		url: 'http://172.21.123.107:80/~apolatnick/Power-Playlist10/master/php/search.php',
+    		url: 'http://playlist.engr.scu.edu/Power-Playlist-master/php/search.php',
     		dataType: 'json',
 				async: false,
     		data: {functionname: 'find', arguments: [$("#find").val()]},
@@ -379,7 +379,12 @@ $(document).ready(function searchSong(){
 							$("#find").val("");
 							//var text = e.target.childNodes[2];
 							var x = e.target;
-							var id = x.id;
+							if(x.parentNode.id == "dropdown") {
+								var id = x.id;
+							}
+							else {
+								var id = x.parentNode.id;
+							}
 							// alert(e.target.childNodes[4]);
 							addToPlaylist(id,aResult);
 						});
