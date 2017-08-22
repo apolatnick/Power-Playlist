@@ -1,0 +1,39 @@
+<DOCTYPE html>
+<title>
+</title>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/DesktopHome.css"></link>
+  <link rel="stylesheet" type="text/css" href="css/SharePin.css"></link>
+  <script src="js/SharePin.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+	<div id="header">
+	 <h1 id="title">Share Your PIN With Guests</h1>
+ </div>
+ <div>
+   <input type="text" id="guestName" class="sharePinInput" placeholder="Guest Name"></input>
+   <input type="text" id="guestEmail" class="sharePinInput" placeholder="Guest E-mail"></input>
+   <input type="text" id="location" class="sharePinInput" placeholder="Location of Event"></input>
+   <input type="text" id="description" class="sharePinInput" placeholder="Event Descrition"></input>
+   <button type="button" id="sendInvite" onclick="sendEmail()">Send Invitation</button>
+ </div>
+</body>
+
+<div id="navigation">
+	<ul>
+	  <li class="navlink borderLeft"><img src="images/HomeIconGrey-02.png" style="width: 40px; padding-top: 10px;"><a href="2DesktopHome.html" style="padding-top: 14px;">Home</a></li>
+	  <li class="navlink borderLeft"><img src="images/MusicProvidersGrey-02.png" style="width: 60px; padding-top: 10px;"><a href="MusicProviders.html" style="padding-top: 14px;">Music Providers</a></li>
+	  <li class="navlink borderLeft"><img src="images/PlaylistsIconGrey-02.png" style="width: 40px; padding-top: 10px;"><a href="" style="padding-top: 14px;">Playlists</a></li>
+		<li class="navlink borderLeft"><img src="images/ShareIconWhite-02.png" style="width: 40px; padding-top: 8px;"><a href="" class="active" style="padding-top: 11px;">Share Pin</a></li>
+	  <li class="navlink"><img src="images/SettingsIconGrey-02.png" style="width: 40px; padding-top: 10px;"><a href="" style="padding-top: 11px;">Settings</a></li>
+	</ul>
+</div>
+<div id="footer">
+ <p style="text-align: center;">Copyright 2017 Sara Cassella / Alexander Polatnick / Kristen Ronhovde</p>
+</div>
+</html>
