@@ -1,0 +1,28 @@
+.sharePinInput{
+  float: left;
+  height: 4em;
+  width: 20%;
+  color: black;
+  margin-left: 40%;
+  margin-top: 2%;
+}
+
+#description{
+  height: 8em;
+}
+
+#title{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+#sendInvite{
+  background-color: purple;
+  color: white;
+  float: left;
+  width: 10%;
+  height: 3em;
+  margin-left: 45%;
+  margin-top: 2%;
+  text: black;
+}
