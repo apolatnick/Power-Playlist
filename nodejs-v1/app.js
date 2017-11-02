@@ -2,6 +2,7 @@ var port = process.env.PORT || 3000,
     http = require('http'),
     fs = require('fs'),
     html = fs.readFileSync('index.html');
+    css = fs.readFileSync('DesktopHome.css');//test line
 
 var log = function(entry) {
     fs.appendFileSync('/tmp/sample-app.log', new Date().toISOString() + ' - ' + entry + '\n');
@@ -28,6 +29,7 @@ var server = http.createServer(function (req, res) {
     } else {
         res.writeHead(200);
         res.write(html);
+        // res.write(css);//test line
         res.end();
     }
 });
